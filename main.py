@@ -7,9 +7,6 @@ from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH
 
 from core.events.day import day
 
-NUM_DAYS = 100
-NUM_POP = 5
-
 
 def night(pop: [Blob]):
     birth_rate = np.sum(random.choices(population=[0, 1, 2], weights=PROB_BIRTH, k=len(pop)))
