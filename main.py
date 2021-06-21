@@ -3,12 +3,12 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from core.Blob import Blob, TYPES
+from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH
 
 from core.events.day import day
 
-NUM_DAYS = 1000
-NUM_POP = 80
-PROB_BIRTH = [0, 0.5, 0.5]
+NUM_DAYS = 100
+NUM_POP = 5
 
 
 def night(pop: [Blob]):

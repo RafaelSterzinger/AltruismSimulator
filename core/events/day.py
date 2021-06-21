@@ -4,10 +4,7 @@ from collections import Counter
 import numpy as np
 
 from core.Blob import Blob
-
-NUM_TREES = 100
-PROB_OF_PREDATOR = 0.5
-TREES = np.repeat(range(0, NUM_TREES), 2).tolist()
+from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR
 
 
 def day(pop: [Blob]):
