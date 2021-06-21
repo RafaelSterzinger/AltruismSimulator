@@ -6,13 +6,15 @@ from core.Blob import Blob, TYPES
 
 from core.events.day import day
 
-NUM_DAYS = 100
-NUM_POP = 5
+NUM_DAYS = 1000
+NUM_POP = 80
+PROB_BIRTH = [0, 0.5, 0.5]
 
 
-def night(current_pop: int):
-    pop_update = np.random.randint(1, 2 + 1, current_pop).sum()
-    return pop_update
+def night(pop: [Blob]):
+    birth_rate = np.sum(random.choices(population=[0, 1, 2], weights=PROB_BIRTH, k=len(pop)))
+    pop.extend([Blob(id, 0) for id in range(0, birth_rate)])
+    return pop
 
 
 def main():
@@ -24,18 +26,22 @@ def main():
 
     for i in range(1, NUM_DAYS):
         cur_pop_size = len(pop)
+
         pop = day(pop)
-        death_amount = cur_pop_size - len(pop)
+        death_rate = cur_pop_size - len(pop)
         if len(pop) == 0:
-            die_hist[i] = death_amount
+            die_hist[i] = death_rate
             reproduction_hist[i] = 0
             pop_hist[i] = 0
             break
-        die_hist[i] = pop_update
-        pop_update = night(pop)
-        pop += pop_update
-        reproduction_hist[i] = pop_update
-        pop_hist[i] = pop
+        die_hist[i] = death_rate
+
+        cur_pop_size = len(pop)
+        pop = night(pop)
+        birth_rate = len(pop) - cur_pop_size
+        reproduction_hist[i] = birth_rate
+
+        pop_hist[i] = len(pop)
 
     draw_stats(pop_hist)
 
