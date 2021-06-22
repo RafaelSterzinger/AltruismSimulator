@@ -1,9 +1,10 @@
+import os
 import random
 
 import numpy as np
 import matplotlib.pyplot as plt
 from core.Blob import Blob, TYPES
-from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS
+from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR
 
 from core.events.day import day
 
@@ -56,7 +57,11 @@ def draw_stats(pop_hist: [int]):
     plt.plot(pop_hist)
     plt.ylabel('population')
     plt.xlabel('days')
+    filepath = 'report/figures/archive/'
+    os.makedirs(filepath, exist_ok=True)
+    plt.savefig(f'{filepath}{TIME_STR}.pdf')
     plt.show()
+
 
 
 if __name__ == '__main__':
