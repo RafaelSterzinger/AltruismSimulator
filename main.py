@@ -45,6 +45,8 @@ def main():
 
 def draw_stats(pop_hist: [int]):
     plt.plot(pop_hist)
+    plt.ylabel('population')
+    plt.xlabel('days')
     plt.show()
 
 
