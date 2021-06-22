@@ -3,7 +3,7 @@
 # Copyright (C) 2014-2020 by Thomas Auzinger <thomas@auzinger.name>
 
 # Replace the 'x' in the next line with the name of the thesis' main LaTeX document without the '.tex' extension
-SOURCE=mp-report
+SOURCE=report
 
 # Build the thesis document
 pdflatex $SOURCE
