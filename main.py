@@ -3,7 +3,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 from core.Blob import Blob, TYPES
-from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH
+from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS
 
 from core.events.day import day
 
@@ -14,13 +14,12 @@ def night(pop: [Blob]):
     return pop
 
 
-def main():
+def simulation():
     pop = [Blob(id, 0) for id in range(0, NUM_POP)]
     pop_hist = [0] * NUM_DAYS
     pop_hist[0] = len(pop)
     die_hist = [0] * NUM_DAYS
     reproduction_hist = [0] * NUM_DAYS
-
     for i in range(1, NUM_DAYS):
         cur_pop_size = len(pop)
 
@@ -39,9 +38,19 @@ def main():
         reproduction_hist[i] = birth_rate
 
         pop_hist[i] = len(pop)
+    return pop_hist
 
-    draw_stats(pop_hist)
 
+def main():
+    pop_histories = [0] * NUM_SIMULATIONS
+    for i in range(0, NUM_SIMULATIONS):
+        pop_hist = simulation()
+        pop_histories[i] = pop_hist
+        plt.plot(pop_hist, color='grey', linewidth=0.2)
+
+    # AVG
+    avg_hist = np.mean(pop_histories, axis=0)
+    draw_stats(avg_hist)
 
 def draw_stats(pop_hist: [int]):
     plt.plot(pop_hist)
