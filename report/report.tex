@@ -14,6 +14,10 @@
 % VARIABLES
 \usepackage{xspace} % allows \commmand instead of \command{} with correct space afterwards
 \newcommand{\VNumSimulations}{20\xspace}
+\newcommand{\cowards}{\textit{cowards}\xspace}
+\newcommand{\coward}{\textit{coward}\xspace}
+\newcommand{\altruist}{\textit{altruist}\xspace}
+\newcommand{\altruists}{\textit{altruists}\xspace}
 
 \usepackage{cleveref}
 
@@ -127,6 +131,51 @@
         \label{fig:stable_pop}
     \end{figure}
 
+    We now introduce a more sophisticated way of survival by introducing concepts of collaboration.
+    For this, we build up on our previous experiment but change the outcome when agents arrive at a predatory tree.
+    If one agents arrives, it gets eaten immediately.
+    In the case that two agents arrive, one of the two gets randomly chosen to be eaten.
+    We differentiate between the following two cases.
+    If the surviving agent is of type \coward, he runs away and lets the other one die.
+    If however the survivor is an \altruist, it helps out the eaten one by yelling and putting from the other agent onto himself.
+    As such the originally to-be-eaten one is able to survive and with a probability of 50\%, the \altruist also gets away unscathed.
+
+    \todo{add code with logic}
+
+     A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:alt_cow_total}.
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/alt_cow_increase_total}
+        \caption{\todo{leave this figure in as it shows that the total population varies a lot which cannot be seen as easily in plot 3}
+        \todo{maybe set the same y-axis }
+        }
+        \label{fig:alt_cow_total}
+    \end{figure}
+
+    We further analyze how this effect gets spread between the two types of agents.
+    In \Cref{fig:alt_cow_separated} we see that the amount of \altruists stays on average roughly the same, while the population in general increases.
+    This also shows that the amount of \cowards steadily increases.
+    A potential explanation for this could be that in general the birth-rate for the \altruists is roughly the same as their die-off rate given their altruistic sacrifices.
+    The cowards on the other hand, while having the same birth-rate, experience lower die-off-rates due to running away from a predator.
+    If we compare this to the original experiment without any altruism (\Cref{fig:stable_pop}), we see that this altruistic thinking has a large net-positive effect.
+    This is the case even though the altruists do not differentiate between who they save.
+    \todo{play around with settings so that they do die out and the following experiment makes more sense}
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/alt_cow_increase_separated}
+        \caption{\todo{}}
+        \label{fig:alt_cow_separated}
+    \end{figure}
+
+    In the following \Cref{fig:alt_cow_separated_rel} we see how these different types stack against each other when compared in relative terms.
+    A slight downward trend can be made out.
+
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/alt_cow_increase_separated_rel}
+        \caption{\todo{}}
+        \label{fig:alt_cow_separated_rel}
+    \end{figure}
 
     \section{Evaluation}
     \todo{

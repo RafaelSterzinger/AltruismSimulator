@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,pycharm+all,latex
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,pycharm+all,latex
 *.pdf
+!report/figures/*
 
 
 ### LaTeX ###
