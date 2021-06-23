@@ -31,5 +31,5 @@ NUM_PASSED_NIGHTS = 0
 ID_COUNTER = itertools.count()
 
 # TODO move to seperate experiment yaml/config file (not config.py)
-PLOT_RELATIVE = False  # 3, 4
+PLOT_RELATIVE = True  # 3, 4
 ALTRUISTS_ARE_EGOISTS = True # 5
