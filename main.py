@@ -97,11 +97,16 @@ def main():
     draw_stats(avg_hist)
 
 
-def plot_dict_by_color(count_hists_by_type_dict, linewidth=1.0):
-    offset_count_hist_by_type = [0] * NUM_DAYS
+def plot_dict_by_color(count_hists_by_type_dict, linewidth=1.0, fill=False):
+    offset_count_hist = [0] * NUM_DAYS
     for type, count_hist_by_type in count_hists_by_type_dict.items():
-        offset_count_hist_by_type = list(map(add, offset_count_hist_by_type, count_hist_by_type))
-        plt.plot(offset_count_hist_by_type, color=POP_COLORS[type], linewidth=linewidth)
+        temp = list(map(add, offset_count_hist, count_hist_by_type))
+        if fill:
+            plt.fill_between(range(NUM_DAYS), offset_count_hist, temp, color=POP_COLORS[type], alpha=0.2)
+        plt.plot(temp, color=POP_COLORS[type], linewidth=linewidth)
+        offset_count_hist = temp
+
+
 
 
 def reset_environment():
@@ -110,7 +115,7 @@ def reset_environment():
 
 
 def draw_stats(pop_hist: [int]):
-    plot_dict_by_color(pop_hist, linewidth=1.0)
+    plot_dict_by_color(pop_hist, linewidth=1.0, fill=True)
     plt.ylabel('population')
     plt.xlabel('days')
     filepath = 'report/figures/archive/'
