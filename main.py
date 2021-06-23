@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 
 from core import config
 from core.Blob import Blob, TYPES
-from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS
+from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
+    PLOT_RELATIVE
 
 from core.events.day import day
 
@@ -72,8 +73,6 @@ def separate_by_type(pop_hist):
 
     return pop_hists_by_type
 
-# TODO move to seperate experiment yaml/config file (not config.py)
-PLOT_RELATIVE = True
 def main():
     blob_histories = [0] * NUM_SIMULATIONS
     count_histories_dict = {type: [[] for _ in range(NUM_SIMULATIONS)] for type in POP_TYPES.keys()}

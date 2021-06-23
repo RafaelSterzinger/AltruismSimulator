@@ -4,7 +4,7 @@ from collections import Counter
 import numpy as np
 
 from core.Blob import Blob
-from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR, T_ALT, PROB_ALTRUIST_DIES
+from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR, T_ALT, PROB_ALTRUIST_DIES, ALTRUISTS_ARE_EGOISTS
 
 
 def day(pop: [Blob]):
@@ -34,11 +34,13 @@ def day(pop: [Blob]):
                 i_survi = agents_at_tree[i][eat_order[1]]
 
                 agent_survi = pop[i_survi]
-                if agent_survi.type == T_ALT:
+                agent_eaten = pop[i_eaten]
+                if agent_survi.type == T_ALT and \
+                        (not ALTRUISTS_ARE_EGOISTS or agent_eaten.type == T_ALT): # if alt egoists, help only other alt
                     new_pop.append(pop[i_eaten])  # originally eaten one survives when altruist yells
                     if np.random.random() > PROB_ALTRUIST_DIES:  # probability that Altruist survives too
                         new_pop.append(pop[i_survi])
-                else:   # TODO other type logic
+                else:  # TODO other type logic
                     new_pop.append(pop[i_survi])
 
     return new_pop
