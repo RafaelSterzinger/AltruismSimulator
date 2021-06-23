@@ -2,6 +2,7 @@ import itertools
 import os
 import random
 from _operator import add
+from operator import truediv
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,9 +59,6 @@ def simulation():
     return blob_hist
 
 
-# TODO move to seperate experiment yaml/config file (not config.py)
-PLOT_RELATIVE = True
-
 
 def separate_by_type(pop_hist):
     pop_hists_by_type = {type: [] for type in POP_TYPES.keys()}
@@ -74,7 +72,8 @@ def separate_by_type(pop_hist):
 
     return pop_hists_by_type
 
-
+# TODO move to seperate experiment yaml/config file (not config.py)
+PLOT_RELATIVE = True
 def main():
     blob_histories = [0] * NUM_SIMULATIONS
     count_histories_dict = {type: [[] for _ in range(NUM_SIMULATIONS)] for type in POP_TYPES.keys()}
@@ -88,25 +87,23 @@ def main():
 
         plot_dict_by_color(count_hist_dict, linewidth=0.1)
 
-        # TODO visualize stacked lineplot, add type 0 to 1 for the second
-        # maybe create two plots, one with absolute counts and one with percentages
-        # as the prior would not show well having both lines
 
     # AVG
     avg_hist = {k: np.mean(v, axis=0) for k, v in count_histories_dict.items()}
     draw_stats(avg_hist)
 
 
-def plot_dict_by_color(count_hists_by_type_dict, linewidth=1.0, fill=False):
+def plot_dict_by_color(count_hists_dict, linewidth=1.0, fill=False):
     offset_count_hist = [0] * NUM_DAYS
-    for type, count_hist_by_type in count_hists_by_type_dict.items():
+    count_hist_sum = np.sum([*count_hists_dict.values()], axis=0)
+    for type, count_hist_by_type in count_hists_dict.items():
+        if PLOT_RELATIVE:
+            count_hist_by_type = list(map(truediv, count_hist_by_type, count_hist_sum))
         temp = list(map(add, offset_count_hist, count_hist_by_type))
         if fill:
             plt.fill_between(range(NUM_DAYS), offset_count_hist, temp, color=POP_COLORS[type], alpha=0.2)
         plt.plot(temp, color=POP_COLORS[type], linewidth=linewidth)
         offset_count_hist = temp
-
-
 
 
 def reset_environment():
