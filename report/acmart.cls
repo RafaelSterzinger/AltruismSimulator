@@ -185,7 +185,7 @@ Computing Machinery]
   \or % acmtog
     \def\ACM@fontsize{9pt}%
   \or % sigconf
-    \def\ACM@fontsize{9pt}%
+    \def\ACM@fontsize{12pt}%
   \or % siggraph
     \def\ACM@fontsize{9pt}%
    \or % sigplan
@@ -550,8 +550,8 @@ Computing Machinery]
      \@mparswitchfalse
      \reversemarginpar
 \fi
-\setlength\parindent{10\p@}
-\setlength\parskip{\z@}
+\setlength\parindent{0\p@}
+\setlength\parskip{12\p@}
 \ifcase\ACM@format@nr
 \relax % manuscript
 \or % acmsmall
@@ -2378,6 +2378,7 @@ Computing Machinery]
   {-.5\baselineskip \@plus -2\p@ \@minus -.2\p@}%
   {-3.5\p@}%
   {\@parfont\@adddotafter}}
+\renewcommand{\baselinestretch}{1.5}
 \renewcommand\part{\@startsection{part}{9}{\z@}%
   {-10\p@ \@plus -4\p@ \@minus -2\p@}%
   {4\p@}%
