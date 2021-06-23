@@ -93,6 +93,27 @@
         \label{fig:stable_pop}
     \end{figure}
 
+    We now introduce a more sophisticated way of survival by introducing concepts of collaboration.
+    For this, we build up on our previous experiment but change the outcome when agents arrive at a predatory tree.
+    If one agents arrives, it gets eaten immediately.
+    In the case that two agents arrive, one of the two gets randomly chosen to be eaten.
+    We differentiate between the following two cases.
+    If the surviving agent is of type \textit{coward}, he runs away and lets the other one die.
+    If however the survivor is an \textit{altruist}, it helps out the eaten one by yelling and putting from the other agent onto himself.
+    As such the originally to-be-eaten one is able to survive and with a probability of 50\%, the altruist also gets away unscathed.
+
+    \todo{add code with logic}
+
+     A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:alt_cow_total}.
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/alt_cow_increase_total}
+        \caption{\todo{}}
+        \label{fig:alt_cow_total}
+    \end{figure}
+
+    We further analyze how this effect gets spread between the two types of agents.
+
 
     \section{Evaluation}
     \todo{

@@ -21,6 +21,10 @@ T_SUC = 2  # sucker
 T_IMP = 3  # impostor
 POP_TYPES = {0: 0.5,
              1: 0.5}
+POP_COLORS = {0: 'green',
+              1: 'blue',
+              2: 'yellow',
+              3: 'red'}
 
 # Variables that change at runtime
 NUM_PASSED_NIGHTS = 0
