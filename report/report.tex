@@ -82,15 +82,22 @@
     If there are two agents taking on a hard job, in the general case only one of the two is able to win while the other dies out (randomly chosen).
     This can be thought of as the company offering a hard job only being content with one of the agents and not paying the other.
 
-    In our first experiment we create a stable environment so that the population without any kind of certain type/tribe logic would stay roughly the same.
-    Next we introduce altruistic thinking.
-    As such, an altruist helps out the other person they are sharing a hard job with.
-    By doing so, the other person is able to live on while the helping altruist now has the burden of doing both job options.
-    We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
-    In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.
-    A final experiment introduces further types next to the altruist.
-    The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
 
+    \begin{enumerate}
+        \item In our first experiment we create a stable environment so that the population without any kind of certain type/tribe logic would stay roughly the same.
+
+        \item Next we introduce altruistic thinking.
+        As such, an altruist helps out the other person they are sharing a hard job with.
+        By doing so, the other person is able to live on while the helping altruist now has the burden of doing both job options.
+        We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
+        In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.
+
+        \item Building up on the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.
+
+        \item A final experiment introduces further types next to the altruist.
+        The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
+
+    \end{enumerate}
 
     We analyze these cases with a variety of different parameters which are explained in further detail in \Cref{sec:method} and \Cref{sec:evaluation}.
     % explain in further detail in Method part
@@ -126,6 +133,11 @@
     \subsection{Direct Fitness}\label{subsec:direct_fit}
 
     \subsubsection{Altruism}
+    One can differentiate between two different kinds of Altruism.   %source? me lol
+    The first refers to the more commonly known general case of selflessness where one helps everyone, regardless of how related they are.
+    This is the case which we are analyzing in our earlier experiments, where \altruists help other \altruists and \cowards.
+    The other notion of altruism refers to within-kin altruism where one only collaborates with related members of the population (visualized in \Cref{fig:mechanisms} A).
+    In our later experiments we also look ah this other case by introducing the notion of \greenbeards which only help other beard-kins out.
 
     \subsubsection{Reciprocity}
 
@@ -143,7 +155,19 @@
     This is e.g. the case where other participant are more closely related benefit from less competition and the less related recipient gets harmed.
     Looking at \Cref{fig:mechanisms} this is visualized in Quadrant C and can be thought of as altruism towards closer kin~\cite{west_altruism_2010}.
 
+    From the lens of our experiments the sort of \greenbeards we analyze, end up possessing spiteful traits by helping out their own kin (direct altruism), and letting the others die out (direct spite, indirect altruism).
+    % summarized up until first paragraph of page 3, still a lot more that can be added
+
     \subsection{Green Beard}
+    Compared to the previously mentioned cases of altruism (help out everyone or help out own kin) another form of altruism can be noted.
+    According to \citeauthor{hamiltonInnateSocialAptitudes1975} for there to be indirect fitness benefits the occurence of the same genetic strain plays a role and not the kinship itself~\cite{hamiltonInnateSocialAptitudes1975} (\Cref{fig:mechanisms}).
+    A certain trait or characteristic can be used to differentiate between sharers of the same gene variation and thus used to decide on whom to help.
+    Natural selection here takes place in regard to that certain gene, even with no other common DNA.
+    To visualize this, one can think of a gene that is responsible for the growth of a green beard where those affected individuals end up cooperating between themselves~\cite{SelfishGeneRichard}.
+    Note that this holds true even if the gene does not manifest itself visually, but leads to association between gene-sharers (e.g. a social gene; social people tend to stick with social people).
+
+    In real life this also opens up the possibility for \textit{falsebeards} which do seem to have inherited the same gene from the outside, but in fact do not end up cooperating as expected.
+    We analyze this case in our final experiment by introducing \impostors.
 
     \cite{west_altruism_2010}
     \cite{bala_green_2017}
@@ -192,6 +216,13 @@
 
 
     \section{Method}\label{sec:method}
+
+
+    \subsubsection*{Experiment 1: Stable Environment}
+    \subsubsection*{Experiment 2: General Altruism}
+    \subsubsection*{Experiment 3: Greenbeard Altruism}
+    \subsubsection*{Experiment 4: On Trust and More}
+
 
     \todo{
         This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
