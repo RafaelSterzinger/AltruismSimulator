@@ -105,7 +105,10 @@
     \citeauthor{darwin_origin_1859} later describes scenarios in which altruism could indirectly improve the individual fitness by cooperating among kin, i.e. supporting the transmission of underlying genes \cite{pennisi_how_2005,gardner_theory_2009}.
     This idea was later picked up by \citeauthor{hamilton_kin_1964} who has formalized \citeauthor{darwin_origin_1859}'s idea and proposed \citeauthor{hamilton_kin_1964}'s rule:
 
-    $$rb-c>0$$
+    \begin{equation}
+        rb-c>0\label{eq:rb-c}
+    \end{equation}
+
 
     This inequality describes when a specific trait will be favored over another by natural selection.
     Here, $c$ denotes the costs of being altruistic for the actor, $b$ encapsulates the benefit of the altruistic act for the recipient, and $r$ is a measure of the genetic relatedness between the actor and the recipient \cite{west_altruism_2010}.
@@ -129,6 +132,16 @@
     \subsection{Indirect Fitness}\label{indirect_fit}
 
     \subsection{Spite}
+    As part of inclusive fitness, the roots behind the theory of altruism can be found.
+    On top of that we find a similar mechanism to altruism, that differs in its manifestation.
+    Spiteful behaviour can be thought of as acts that harm the recipient (and potentially the actor).
+    This way, while the harmed recipient may suffer from reduced fitness, one is able to indirectly cause an increase in fitness for other participants, by removing the recipient from the pool of competition~\cite{hamiltonSelfishSpitefulBehaviour1970}.
+
+    Looking at \Cref{eq:rb-c} we consider the case where the relatedness factor $r$ can be negative.
+    A negative value could stand for the fact that the recipient is further from the actor than the average population in relatedness.
+    As such, even with a positive $c$ value (actor is harmed) and a negative $b$ value (recipient is harmed), the equation can be fulfilled.
+    This is e.g. the case where other participant are more closely related benefit from less competition and the less related recipient gets harmed.
+    Looking at \Cref{fig:mechanisms} this is visualized in Quadrant C and can be thought of as altruism towards closer kin~\cite{west_altruism_2010}.
 
     \subsection{Green Beard}
 
@@ -137,6 +150,10 @@
     \cite{nowak_five_2006}
 
     \subsection{Kin Selection}
+    Indirect fitness can most easily be observed through interactions with others of the same kin.
+    Kin here refers to somebody else sharing the common trait of genes that are inherited from one common ancestor.
+    Indirect fitness is often also called \textit{Kin Selection} \cite{west_altruism_2010}.
+
     (\cite{west_altruism_2010})
     \cite{noauthor_pdf_nodate}
 
