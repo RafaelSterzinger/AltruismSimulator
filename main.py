@@ -121,4 +121,6 @@ def draw_stats(pop_hist: [int]):
 
 
 if __name__ == '__main__':
+    random.seed(69)
+    np.random.seed(69)
     main()
