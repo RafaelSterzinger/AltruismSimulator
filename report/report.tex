@@ -14,10 +14,23 @@
 % VARIABLES
 \usepackage{xspace} % allows \commmand instead of \command{} with correct space afterwards
 \newcommand{\VNumSimulations}{20\xspace}
+\newcommand{\VNumDays}{1000\xspace}
+\newcommand{\VNumPop}{100\xspace}
+\newcommand{\VNumTrees}{140\xspace}
+\newcommand{\VProbPredator}{0.003\xspace}
+\newcommand{\VProbAltruistDies}{0.50\xspace}
+
+
 \newcommand{\cowards}{\textit{cowards}\xspace}
 \newcommand{\coward}{\textit{coward}\xspace}
 \newcommand{\altruist}{\textit{altruist}\xspace}
 \newcommand{\altruists}{\textit{altruists}\xspace}
+\newcommand{\suckers}{\textit{suckers}\xspace}
+\newcommand{\sucker}{\textit{sucker}\xspace}
+\newcommand{\impostors}{\textit{impostors}\xspace}
+\newcommand{\impostor}{\textit{impostor}\xspace}
+\newcommand{\greenbeards}{\textit{greenbeards}\xspace}
+\newcommand{\greenbeard}{\textit{greenbeard}\xspace}
 
 \usepackage{cleveref}
 
@@ -37,11 +50,9 @@
     \maketitle
 
 
-    \section{Introduction}
-    \todo{In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.
+    \section{Introduction}\label{sec:introduction}
+    \todo{In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.}
 
-    In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result.
-    }
 
     The evolution of cooperation is a question which has been bothering humanity for a long time.
     Not only is it open for debate in the fields of anthropology, sociology, and economy but also evolutionary biologist have tried to answer this question on multiple occasions \cite{gardner_theory_2009}.
@@ -49,10 +60,42 @@
 
     \todo{maybe extend introduction a little bit more, maybe also some concrete examples from nature}
 
+    \todo{Indirect reciprocity}
 
-    \section{Inclusive Fitness}
+    %\todo{In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result. }
 
-    Already back in the days when \citeauthor{darwin_origin_1859} developed his theory on the origin of species, the idea of cooperative behaviour stood in contrast to his beliefs of natural selection and the fitness of individuals, that is the reproductive success that allows a species to dominate one another \cite{pennisi_how_2005}.
+    \todo{relate this to related work/experiments}
+
+    In this work, we conduct a variety of experiments to analyze how different levels of cooperation and environment settings affect a population and the development of the respective types/tribes within.
+    For this we run \VNumSimulations, each spanning \VNumDays and visualize the average results of those runs.
+    The general environment looks as follows.
+    Based on a starting population of \VNumPop, these starting agents compete for \VNumTrees possible jobs to win money every day.
+    One of these jobs enables up to 2 agents to live on as they can be split, without changing any outcome.
+    To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job option, he goes bankrupt and dies out.
+    On top of that, not every one of the jobs is a guaranteed win.
+    With a certain probability \VProbPredator an option is considered to be hard and if only one agent has taken on that job, he dies out.
+    If there are two agents taking on a hard job, in the general case only one of the two is able to win while the other dies out (randomly chosen).
+    This can be thought of as the company offering a hard job only being content with one of the agents and not paying the other.
+
+    In our first experiment we create a stable environment so that the population without any kind of certain type/tribe logic would stay roughly the same.
+    Next we introduce altruistic thinking.
+    As such, an altruist helps out the other person they are sharing a hard job with.
+    By doing so, the other person is able to live on while the helping altruist now has the burden of doing both job options.
+    We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
+    In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.
+    A final experiment introduces further types next to the altruist.
+    The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
+
+
+    We analyze these cases with a variety of different parameters which are explained in further detail in \Cref{sec:method} and \Cref{sec:evaluation}.
+    % explain in further detail in Method part
+
+    \todo{Mention central results and key insight briefly.}
+
+
+    \section{Inclusive Fitness}\label{sec:inclusive-fitness}
+
+    Already back in the days when \citeauthor{darwin_origin_1859} developed his theory on the origin of species~\cite{darwin_origin_1859}, the idea of cooperative behaviour stood in contrast to his beliefs of natural selection and the fitness of individuals, that is the reproductive success that allows a species to dominate one another \cite{pennisi_how_2005}.
     Here, the key problem was that maximization of individual fitness does not align with the occurrence of altruistic or spiteful traits as acting cooperatively is costly and therefore would lower their own fitness level \cite{west_altruism_2010}.
     \citeauthor{darwin_origin_1859} later describes scenarios in which altruism could indirectly improve the individual fitness by cooperating among kin, i.e. supporting the transmission of underlying genes \cite{pennisi_how_2005,gardner_theory_2009}.
     This idea was later picked up by \citeauthor{hamilton_kin_1964} who has formalized \citeauthor{darwin_origin_1859}'s idea and proposed \citeauthor{hamilton_kin_1964}'s rule:
@@ -61,7 +104,7 @@
 
     This inequality describes when a specific trait will be favored over another by natural selection.
     Here, $c$ denotes the costs of being altruistic for the actor, $b$ encapsulates the benefit of the altruistic act for the recipient, and $r$ is a measure of the genetic relatedness between the actor and the recipient \cite{west_altruism_2010}.
-    This formulation is also known as inclusive fitness which is a composition of direct fitness (\ref{direct_fit}), i.e. the improvement of individual fitness, and indirect fitness (\ref{indirect_fit}), i.e. enhancing the reproductive success of other genetic related individuals.
+    This formulation is also known as inclusive fitness which is a composition of direct fitness (\ref{subsec:direct_fit}), i.e. the improvement of individual fitness, and indirect fitness (\ref{indirect_fit}), i.e. enhancing the reproductive success of other genetic related individuals.
     Figure \ref{fig:hamilton} summarizes this composition graphically.
 
     For the introduction of the different subcategories of direct and indirect fitness, we will borrow definitions from the more recent work by \citeauthor{west_altruism_2010} \cite{west_altruism_2010} instead of the work by \citeauthor{gardner_theory_2009} \cite{gardner_theory_2009}.
@@ -72,7 +115,7 @@
         \label{fig:hamilton}
     \end{figure}
 
-    \subsection{Direct Fitness}\label{direct_fit}
+    \subsection{Direct Fitness}\label{subsec:direct_fit}
 
     \subsubsection{Altruism}
 
@@ -82,16 +125,15 @@
 
     \subsection{Spite}
 
-    \subsection{Green Beard}\cite{west_altruism_2010}\cite{bala_green_2017}
+    \subsection{Green Beard}
 
-
-
-
+    \cite{west_altruism_2010}
+    \cite{bala_green_2017}
     \cite{nowak_five_2006}
 
-    (
-
-    \subsection{Kin Selection}\cite{west_altruism_2010}\cite{noauthor_pdf_nodate})
+    \subsection{Kin Selection}
+    (\cite{west_altruism_2010})
+    \cite{noauthor_pdf_nodate}
 
 
     \begin{figure}
@@ -110,14 +152,14 @@
 
 
     \section{Hypothesis}
-    Key question, how does missinformation or deception influence cooperation.
+    Key question, how does misinformation or deception influence cooperation.
 
 
     \section{Related Work}
     \todo{
-    This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
+        This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
 
-    Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
+        Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
     }
     \cite{wallace_misinformation_1973}
     \cite{west_altruism_2010}(\cite{keller_selfish_1998})
@@ -127,10 +169,11 @@
     \cite{szamado_deception_2016}\cite{noauthor_indirect_nodate}\cite{bhui_how_2019}
 
 
-    \section{Method}
+    \section{Method}\label{sec:method}
+
     \todo{
-    This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
-    If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
+        This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
+        If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
     }
 
     Algorithms regarding matching
@@ -220,25 +263,25 @@
     \end{figure}
 
 
-    \section{Evaluation}
+    \section{Evaluation}\label{sec:evaluation}
     \todo{
-    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
     }
 
 
-    \section{Discussion}
+    \section{Discussion}\label{sec:discussion}
     \todo{
-    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
+        Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
+        If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
     }
 
 
-    \section{Conclusion}
+    \section{Conclusion}\label{sec:conclusion}
     \todo{
-    Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
+        Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
     }
     \bibliographystyle{ACM-Reference-Format}
     \bibliography{bibliography}
