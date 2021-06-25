@@ -58,10 +58,9 @@
     Not only is it open for debate in the fields of anthropology, sociology, and economy but also evolutionary biologist have tried to answer this question on multiple occasions \cite{gardner_theory_2009}.
     Hence, in 2005, at the 125th anniversary issue of the American Association for the Advancement of Science (AAAS) they declared the question "How Did Cooperative Behavior Evolve?" to be one of the top 25 unsolved puzzles science is facing over the next quarter century \cite{aaas_125th_2005}.
 
-    \todo{maybe extend introduction a little bit more, maybe also some concrete examples from nature}
     Already in the year \citeyear{darwin_origin_1859}, \citeauthor{darwin_origin_1859}'s natural selection theory tried to explain the underlying mechanisms of a growing population.
     More helpful characteristics that lead to better reproduction will keep on spreading throughout the population.
-    This gives off the impression that certain traits will develop in order to optimize an individual's reproducibility (fitness). \citeauthor{fisherGeneticalTheoryNatural1930} builds up on this by introducing the notion of gene frequencies \cite{darwin_origin_1859}.
+    This gives off the impression that certain traits will develop in order to optimize an individual's reproducibility (fitness). \citeauthor{fisherGeneticalTheoryNatural1930} builds up on this by introducing the notion of gene frequencies \cite{darwin_origin_1859}.\todo{citation missing/wrong?}
     Genes leading to higher individual fitness thus will increase in frequency and lead to a general increase in mean fitness \cite{fisherGeneticalTheoryNatural1930}.
 
 
@@ -137,9 +136,9 @@
     The first refers to the more commonly known general case of selflessness where one helps everyone, regardless of how related they are.
     This is the case which we are analyzing in our earlier experiments, where \altruists help other \altruists and \cowards.
     The other notion of altruism refers to within-kin altruism where one only collaborates with related members of the population (visualized in \Cref{fig:mechanisms} A).
-    In our later experiments we also look ah this other case by introducing the notion of \greenbeards which only help other beard-kins out.
+    In our later experiments we also look ah this other case by introducing the notion of \greenbeards which only help other beard-kins \todo{really kins?} out.
 
-    \subsubsection{Reciprocity}
+    \subsubsection{Reciprocity}\label{reciprocity}
 
     \subsection{Indirect Fitness}\label{indirect_fit}
 
@@ -173,14 +172,12 @@
     \cite{bala_green_2017}
     \cite{nowak_five_2006}
 
+    \todo{would not make this an extra section}
+
     \subsection{Kin Selection}
     Indirect fitness can most easily be observed through interactions with others of the same kin.
     Kin here refers to somebody else sharing the common trait of genes that are inherited from one common ancestor.
     Indirect fitness is often also called \textit{Kin Selection} \cite{west_altruism_2010}.
-
-    (\cite{west_altruism_2010})
-    \cite{noauthor_pdf_nodate}
-
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/mechanisms}
@@ -189,12 +186,27 @@
     \end{figure}
 
 
+    \section{Indirect Reciprocity}
+    Another important concept is the mechanism of indirect reciprocity which is closely related to direct reciprocity (\Cref{reciprocity}) with the difference that reciprocation comes from another individual who is not the original recipient \cite{alexander_biology_1987,boyd_evolution_1989}.
+    The significance of this idea stems from the fact that research belief that indirect reciprocity played a key role in establishing large-scale human societies \cite{roberts_kin_2019}.
+    This importance initially arose when the idea of cooperative reputation, e.g. the image scoring strategy or more sophisticated mechanisms such as the standing strategy \cite{leimar_evolution_2001,ohtsuki_leading_2006}, was proposed that provided an explanation on why indirect reciprocity might work \cite{nowak_evolution_1998}.
+    Here, the idea is that donors base their decision of whom to donate to on a score which is based on a recipient's reputation which consequently means that cooperation can occur even if the donor, and the recipient have never met.
+    Different experiments conducted in the past support this phenomenon \cite{milinski_cooperation_2002, milinski_reputation_2002,milinski_reputation_2016}.
 
-    \todo{Either subsection here or in related work Indirect Reciprocity}
-    \cite{pennisi_how_2005}
-    \cite{nowak_evolution_2005}
-    Milinski
-    (\cite{nowak_evolution_1998})
+    A very different view on the idea of indirect reciprocity provides the paper by \citeauthor{roberts_kin_2019} \cite{roberts_kin_2019} where he argues that this type of cooperation is rather driven by relatedness instead of actual reciprocity.
+
+    "[...] individuals do not help other helpers to receive something back from third parties; instead, they help because this features the spread of a stratgy of helping those who help others [...]" \cite{roberts_kin_2019}
+
+    \cite{nowak_five_2006}
+
+    \citeauthor{roberts_kin_2019} argues that image scoring has inconsistencies
+    This idea of indirect reciprocity being related to kin selection is summarized in \Cref{fig:indirect_reciprocity}.
+
+    \begin{figure*}
+        \includegraphics[width=\textwidth]{figures/indirect_reciprocity}
+        \caption{The relation/similarity between direct and indirect recprocity, and image scoring and relatedness \cite{roberts_kin_2019}.}
+        \label{fig:indirect_reciprocity}
+    \end{figure*}
 
 
     \section{Hypothesis}
@@ -203,9 +215,9 @@
 
     \section{Related Work}
     \todo{
-        This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
+    This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
 
-        Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
+    Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
     }
     \cite{wallace_misinformation_1973}
     \cite{west_altruism_2010}(\cite{keller_selfish_1998})
@@ -225,8 +237,8 @@
 
 
     \todo{
-        This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
-        If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
+    This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
+    If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
     }
 
     Algorithms regarding matching
@@ -318,23 +330,23 @@
 
     \section{Evaluation}\label{sec:evaluation}
     \todo{
-        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
     }
 
 
     \section{Discussion}\label{sec:discussion}
     \todo{
-        Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
+    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-        If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
+    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
     }
 
 
     \section{Conclusion}\label{sec:conclusion}
     \todo{
-        Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
+    Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
     }
     \bibliographystyle{ACM-Reference-Format}
     \bibliography{bibliography}
