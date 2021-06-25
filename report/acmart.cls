@@ -2404,6 +2404,11 @@ Computing Machinery]
 \or % sigconf
  \def\@secfont{\bfseries\Large\section@raggedright\MakeTextUppercase}
  \def\@subsecfont{\bfseries\Large\section@raggedright}
+ \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+   {-.75\baselineskip \@plus -2\p@ \@minus -.2\p@}%
+   {.25\baselineskip}%
+   {\@subsubsecfont}}
+ \def\@subsubsecfont{\bfseries\large\section@raggedright}
 \or % siggraph
  \def\@secfont{\sffamily\bfseries\Large\section@raggedright\MakeTextUppercase}
  \def\@subsecfont{\sffamily\bfseries\Large\section@raggedright}
