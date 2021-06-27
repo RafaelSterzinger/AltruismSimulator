@@ -14,11 +14,12 @@
 % VARIABLES
 \usepackage{xspace} % allows \commmand instead of \command{} with correct space afterwards
 \newcommand{\VNumSimulations}{20\xspace}
-\newcommand{\VNumDays}{1000\xspace}
+\newcommand{\VNumDays}{10000\xspace}
 \newcommand{\VNumPop}{100\xspace}
 \newcommand{\VNumTrees}{140\xspace}
 \newcommand{\VProbPredator}{0.003\xspace}
 \newcommand{\VProbAltruistDies}{0.50\xspace}
+\newcommand{\VProbKids}{0.001\xspace}
 
 
 \newcommand{\cowards}{\textit{cowards}\xspace}
@@ -213,9 +214,9 @@
 
     \section{Related Work}
     \todo{
-    This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
+        This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
 
-    Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
+        Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
     }
     \cite{wallace_misinformation_1973}
     \cite{west_altruism_2010}(\cite{keller_selfish_1998})
@@ -226,33 +227,54 @@
 
 
     \section{Method}\label{sec:method}
+    This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
+    In general the situation can be thought of as follows.
+    Based on a starting population of \VNumPop, these \VNumPop agents compete for a certain amount of limited resources.
+    We cap these at \VNumTrees, but allow one such resource to be shared by two agents, leading to effectively 2 * \VNumTrees resources.
+    The reason for this is that two agents sharing a resource can help each other out in the case the resource turns out to be faulty.
+    We set \VProbPredator of the resources to be faulty.
+    When two agents share such a faulty resource, only one of them randomly gets chosen to live on (if there is only one, it does not live on).
+    In the case that an agent is not able to access a resource, it ceases to live.
+    This is done over \VNumDays days and averaged throughout \VNumSimulations simulations.
+    We simulate this case with a variety of different agent types that act differently and enable various amounts of altruism.
+    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to help the agent-to-die and potentially end up dying itself instead.
+    We differentiate these by grouping them into different kinds of tribes/types.
+
+    To give it a more modern spin, we frame the story as being part of the job market.
+    Here an agent stands for a contractor, a resource for a job, with a faulty resource corresponding to a hard job where only one of the contractors gets paid.
+    In this simple scenario a contractor goes bankrupt if they cannot find a job for a day.
+    By taking on workload of the hard job from the other contractor who was bound to be fired, one is able to help the other survive with the risk of being fired oneself.
 
 
     \subsubsection*{Experiment 1: Stable Environment}
+    To create a general baseline for the simulations to take place in, we implement an environment that on average does not see any large population changes.
+    This can be used to compare against in regards to the different types of tribe logic when they come across a faulty resource problem.
+    Every night the surviving agents reproduce by themselves (aka no partner needed) leading to 1 or 2 offspring with a probability of \VProbKids.
+    The offspring are of the same tribe as the parent.
+
     \subsubsection*{Experiment 2: General Altruism}
+    \todo{Next we introduce altruistic thinking.
+    As such, an altruist helps out the other person they are sharing a hard job with.
+    By doing so, the other person is able to live on while the helping altruist now has the burden of doing both job options.
+    We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
+    In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.}
+
     \subsubsection*{Experiment 3: Greenbeard Altruism}
+    \todo{Building up on the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.}
+
     \subsubsection*{Experiment 4: On Trust and More}
+    \todo{A final experiment introduces further types next to the altruist.
+    The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).}
 
 
-    \todo{
-    This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
-    If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
-    }
-
+%    \todo{
+%        This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
+%        If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
+%    }
+%
     Algorithms regarding matching
     \cite{geffen_efficient_2017}
     \todo{average birth and death rate per day. this would illustrate why convergence is rather slow}
-
-    As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the 1000 day timeframe we have set.
-    As can be seen in \Cref{fig:stable_pop} averaging over \VNumSimulations runs, the starting population of 100 stays roughly the same.
-    \todo{Info about params}
-
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/stable_population}
-        \caption{While there are big deviations, on average the population stays roughly the same.
-        Visualized are \VNumSimulations random runs in light grey and their average in blue. }
-        \label{fig:stable_pop}
-    \end{figure}
 
     We now introduce a more sophisticated way of survival by introducing concepts of collaboration.
     For this, we build up on our previous experiment but change the outcome when agents arrive at a predatory tree.
@@ -310,8 +332,6 @@
     On average a slight relative population increase of the \altruists can be observed.
 
 
-
-
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/alt_ego}
         \caption{\todo{}}
@@ -327,24 +347,48 @@
 
 
     \section{Results}\label{sec:results}
+    In the following section we present the results of our experiments.
+
+    We note that for our hypothesis and insights we primarily look at the average of the results of our \VNumSimulations simulations.
+    The colours denote the different kinds of tribes and their respective behaviours when they are the survivor in a faulty resource situation.
+    Blue stands for \cowards which never help out.
+    Yellow denotes \suckers which always help out.
+    Red stands for \impostors which appear to others as they would help out but in fact do not
+    Green stands for \greenbeards which only help out other seemingly altruistic agents (aka suckers, greenbeards and impostors).
+
+    \subsubsection*{Experiment 1: Stable Environment}
+    As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
+    As can be seen in \Cref{fig:stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/stable_population}
+        \caption{With some deviations, on average the population stays roughly the same at around \VNumPop.
+        Visualized are \VNumSimulations random runs in light and their average in dark blue. }
+        \label{fig:stable_pop}
+    \end{figure}
+
+
+    \subsubsection*{Experiment 2: General Altruism}
+    \subsubsection*{Experiment 3: Greenbeard Altruism}
+    \subsubsection*{Experiment 4: On Trust and More}
     \todo{
-    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
     }
 
 
     \section{Discussion}\label{sec:discussion}
     \todo{
-    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
+        Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
+        If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
     }
 
 
     \section{Conclusion}\label{sec:conclusion}
     \todo{
-    Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
+        Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
     }
     \bibliographystyle{ACM-Reference-Format}
     \bibliography{bibliography}

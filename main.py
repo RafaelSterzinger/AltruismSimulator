@@ -32,8 +32,8 @@ def simulation():
     pop = [Blob(next(ID_COUNTER), types[id]) for id in range(0, NUM_POP)]
     pop_hist = [0] * NUM_DAYS
     pop_hist[0] = len(pop)
-    blob_hist = [0] * NUM_DAYS
-    blob_hist[0] = pop
+    blob_hist = []
+    blob_hist.append(pop)
 
     die_hist = [0] * NUM_DAYS
     reproduction_hist = [0] * NUM_DAYS
@@ -55,10 +55,9 @@ def simulation():
         reproduction_hist[i] = birth_rate
 
         pop_hist[i] = len(pop)
-        blob_hist[i] = pop
+        blob_hist.append(pop)
         config.NUM_PASSED_NIGHTS += 1
     return blob_hist
-
 
 
 def separate_by_type(pop_hist):
@@ -73,6 +72,7 @@ def separate_by_type(pop_hist):
 
     return pop_hists_by_type
 
+
 def main():
     blob_histories = [0] * NUM_SIMULATIONS
     count_histories_dict = {type: [[] for _ in range(NUM_SIMULATIONS)] for type in POP_TYPES.keys()}
@@ -86,9 +86,9 @@ def main():
 
         plot_dict_by_color(count_hist_dict, linewidth=0.1)
 
-
     # AVG
-    avg_hist = {k: np.mean(v, axis=0) for k, v in count_histories_dict.items()}
+    avg_hist = {k: np.mean(v, axis=0) for k, v in
+                count_histories_dict.items()}  # TODO: fails with NUM_SIMULATIONS > 7..
     draw_stats(avg_hist)
 
 

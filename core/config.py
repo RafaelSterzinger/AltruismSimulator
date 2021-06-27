@@ -4,7 +4,7 @@ import time
 TIME_STR = time.strftime('%Y-%m-%d-%H-%M-%S')
 import numpy as np
 
-NUM_SIMULATIONS = 1
+NUM_SIMULATIONS = 7    # TODO: averaging in main.py line 91 fails with > 7..
 
 NUM_DAYS = 10000
 NUM_POP = 100
@@ -35,4 +35,8 @@ ID_COUNTER = itertools.count()
 # TODO move to seperate experiment yaml/config file (not config.py)
 PLOT_RELATIVE = True  # 3, 4
 GREEN_BEARD = True # 5
-POPULATION_SIMULATION = False #1
+POPULATION_SIMULATION = True #1
+
+if POPULATION_SIMULATION:
+    POP_TYPES = {1: 1}
+    PLOT_RELATIVE = False  # 3, 4
