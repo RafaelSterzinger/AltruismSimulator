@@ -7,6 +7,7 @@
 \usepackage{booktabs} % For formal tables
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{amsmath} % for writing algorithms
+\usepackage{cleveref}
 
 % OWN COMMANDS
 \newcommand{\todo}[1]{{\color{red}{#1}}}
@@ -33,7 +34,6 @@
 \newcommand{\greenbeards}{\textit{greenbeards}\xspace}
 \newcommand{\greenbeard}{\textit{greenbeard}\xspace}
 
-\usepackage{cleveref}
 
 \begin{document}
     \title{On Trust and Prosociality}
@@ -117,8 +117,8 @@
 
     This inequality describes when a specific trait will be favored over another by natural selection.
     Here, $c$ denotes the costs of being altruistic for the actor, $b$ encapsulates the benefit of the altruistic act for the recipient, and $r$ is a measure of the genetic relatedness between the actor and the recipient \cite{west_altruism_2010}.
-    This formulation is also known as inclusive fitness which is a composition of direct fitness (\ref{subsec:direct_fit}), i.e. the improvement of individual fitness, and indirect fitness (\ref{indirect_fit}), i.e. enhancing the reproductive success of other genetic related individuals.
-    Figure \ref{fig:hamilton} summarizes this composition graphically.
+    This formulation is also known as inclusive fitness which is a composition of direct fitness (\Cref{subsec:direct_fit}), i.e. the improvement of individual fitness, and indirect fitness (\Cref{subsec:indirect_fitness}), i.e. enhancing the reproductive success of other genetic related individuals.
+    \Cref{fig:hamilton} summarizes this composition graphically.
 
     Indirect fitness can most easily be observed through interactions with others of the same kin.
     Kin here refers to somebody else sharing the common trait of genes that are inherited from one common ancestor.
@@ -146,7 +146,7 @@
     In the case where agents help others that have helped them before, cooperation leads to a direct fitness increase.
     This holds only if the short term cost $c$ is smaller than the long term benefit $b$.
 
-    \subsection{Indirect Fitness}\label{indirect_fit}
+    \subsection{Indirect Fitness}\label{subsec:indirect_fitness}
 
     \subsubsection{Spite}
     As part of inclusive fitness, the roots behind the theory of altruism can be found.
@@ -185,20 +185,39 @@
     \end{figure}
 
 
-    \section{Indirect Reciprocity}
+    \section{Indirect Reciprocity}\label{sec:indirect_reciprocity}
     Another important concept is the mechanism of indirect reciprocity which is closely related to direct reciprocity (\Cref{reciprocity}) with the difference that reciprocation comes from another individual who is not the original recipient \cite{alexander_biology_1987,boyd_evolution_1989}.
-    The significance of this idea stems from the fact that research belief that indirect reciprocity played a key role in establishing large-scale human societies \cite{roberts_kin_2019}.
-    This importance initially arose when the idea of cooperative reputation, e.g. the image scoring strategy or more sophisticated mechanisms such as the standing strategy \cite{leimar_evolution_2001,ohtsuki_leading_2006}, was proposed that provided an explanation on why indirect reciprocity might work \cite{nowak_evolution_1998}.
-    Here, the idea is that donors base their decision of whom to donate to on a score which is based on a recipient's reputation which consequently means that cooperation can occur even if the donor, and the recipient have never met.
-    Different experiments conducted in the past support this phenomenon \cite{milinski_cooperation_2002, milinski_reputation_2002,milinski_reputation_2016}.
+    The significance of this idea stems from the fact that research beliefs that indirect reciprocity played a key role in establishing large-scale human societies \cite{roberts_kin_2019}.
+    This importance initially arose when the idea of cooperative reputation, e.g. the image scoring strategy or more sophisticated mechanisms such as the standing strategy \cite{leimar_evolution_2001,ohtsuki_leading_2006}, were proposed that provided an explanation on why indirect reciprocity might work \cite{nowak_evolution_1998}.
+    Here, the idea is that donors base their decision of whom to donate to on a score which is based on a recipient's reputation.
+    This consequently means that cooperation can occur even if the donor, and the recipient have never met.
+    Different experiments conducted in the past support this phenomenon \cite{nowak_five_2006, milinski_cooperation_2002, milinski_reputation_2002,milinski_reputation_2016}.
 
     A very different view on the idea of indirect reciprocity provides the paper by \citeauthor{roberts_kin_2019} \cite{roberts_kin_2019} where he argues that this type of cooperation is rather driven by relatedness instead of actual reciprocity.
 
-    "[...] individuals do not help other helpers to receive something back from third parties; instead, they help because this features the spread of a stratgy of helping those who help others [...]" \cite{roberts_kin_2019}
+    "[...] individuals do not help other helpers to receive something back from third parties; instead, they help because this features the spread of a strategy of helping those who help others [...]" \cite{roberts_kin_2019}
 
-    \cite{nowak_five_2006}
 
-    \citeauthor{roberts_kin_2019} argues that image scoring has inconsistencies
+    Concerning indirect reciprocity via image scoring, \citeauthor{roberts_kin_2019} argues that results from previously conducted experiments have been misinterpreted as evidence for indirect reciprocity.
+    For instance, in an experiment by \citeauthor{milinski_reputation_2002} \cite{milinski_reputation_2002}, their result was used to explain indirect reciprocity but it lacked insights whether or not donors actually got higher payoffs by playing the image scoring strategy.
+    This is a key problem as higher payoffs are a requirement for indirect reciprocity.
+    Furthermore, demonstrating that an individual who plays the image scoring strategy performs better would still not be enough proof for indirect reciprocity via image scoring as self-interested players who want to maximize their own payoff would donate indiscriminately in a population dominated by image scorers as donating more results in higher payoffs \cite{roberts_kin_2019}.
+    According to \citeauthor{roberts_kin_2019} the phenomenon which actually needs to be shown is that "those who discriminate most have a higher payoff than those who give to anyone" \cite{roberts_kin_2019}.
+
+    Regarding the idea of image scoring strategies being actually driven by relatedness, \citeauthor{roberts_kin_2019} refers back to \citeauthor{hamilton_kin_1964}'s rule.
+    According to \Cref{eq:rb-c} altruism is beneficial if the benefit $b$ for the recipient, scaled by the relatedness $r$ outweighs the costs $c$ of the actor.
+    Similarly, \citeauthor{nowak_five_2006} \cite{nowak_five_2006} derive a equation for indirect reciprocity via image scoring:
+
+    \begin{equation}
+        qb - c > 0\label{eq:qb-c}
+    \end{equation}
+
+    Here, $q$ denotes the social acquaintanceship, i.e. the probability of knowing the recipient's image score.
+    Based on this similar notation, \cite{roberts_kin_2019} argues that $q$ is actually relatedness.
+
+    "Individuals should pay the cost of helping when this is offset by the benefit to the recipient multiplied by their chance of sharing the same strategy." \cite{roberts_kin_2019}
+
+    Hence, altruism is selected by means of indirect fitness rather than indirect reciprocity.
     This idea of indirect reciprocity being related to kin selection is summarized in \Cref{fig:indirect_reciprocity}.
 
     \begin{figure*}
@@ -207,16 +226,29 @@
         \label{fig:indirect_reciprocity}
     \end{figure*}
 
+    \citeauthor{roberts_kin_2019} goes even further and says that reciprocity is an illusion and that the image scores and individual observes are actually cues about kinship.
+    Important for our experiments is the idea that in absence of actual relatedness green beard types are observed that help individuals to distinguish between contributors and free riders \cite{roberts_kin_2019}.
+
 
     \section{Hypothesis}
-    Key question, how does misinformation or deception influence cooperation.
+    Inspired by the work of \citeauthor{milinski_cooperation_2002} \cite{milinski_cooperation_2002} and the additional insights from \citeauthor{roberts_kin_2019} \cite{roberts_kin_2019}, we found the idea of image scoring and how it can enforce cooperation in a public goods game without/little punishment very interesting.
+    Given the idea that this image score is mostly spread via gossip in our society, we pose the question on whether this gossip can always be trusted.
+    Similarly to the game "Chinese Whispers/Telephone", we argue that gossip might be altered by some noise over time resulting in a scenario where agents with an actual bad image score might be perceived as being cooperative.
+    As a result from that imposters might occur which seem to act cooperatively influencing the overall effectiveness of cooperation.
+
+    Based on this posed question we want explore whether in such a setting cooperation would still outweigh defection or if defection would take over.
+    We hypothesise that misinformation or deception has a major influence on the effectiveness of cooperation and that as soon as misinformation gets introduced to the setting altruism via cooperation gets unstable quickly.
+    Furthermore, we think that the amount of misinformation does not necessarily play an important role rather if misinformation exists or not.
+    Based on the previously mentioned (\Cref{sec:indirect_reciprocity}) relation between indirect reciprocity and relatedness, or image scoring and the green beard phenomenon, we proceed in our experiments with the green beard effect as mean of image scoring mechanism.
+
+    In order to be more concrete, we argue that the more noise is injected in $q$ from \Cref{eq:qb-c} or in other words, the more imposters are prominent, the rarer it is to observe cooperative behaviour.
 
 
     \section{Related Work}
     \todo{
-        This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
+    This section is optional and it is fine to leave it out completely. While the most relevant papers should be discussed adequately somewhere (e.g. in the introduction), we do not expect you to give a complete overview of related work. Nonetheless, if you would like to do so, this would be the place to do it.
 
-        Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
+    Generally, use the \texttt{{\char'134}cite} command to cite other works, e.g. \cite{Douglass98,Harel79}. To add a new reference, you need to add a bibtex entry to the bibliography file, in this case \texttt{bibliography.bib}.
     }
     \cite{wallace_misinformation_1973}
     \cite{west_altruism_2010}(\cite{keller_selfish_1998})
@@ -224,6 +256,8 @@
     connection from image scoringn to greenbeards/kin selection
     \cite{roberts_kin_2019} -> maybe to reciprocity -> also to method descirbes why we deviate from our initial proposal
     \cite{szamado_deception_2016}\cite{noauthor_indirect_nodate}\cite{bhui_how_2019}
+
+    Robert says that green beard alturism is expected to be rare because idiciduals might cheat, displaying a green beard when they do not have the altrusitic gene.
 
 
     \section{Method}\label{sec:method}
@@ -287,9 +321,9 @@
 %    }
 %
     \todo{
-        Algorithms regarding matching
-        \cite{geffen_efficient_2017}
-        average birth and death rate per day. this would illustrate why convergence is rather slow}
+    Algorithms regarding matching
+    \cite{geffen_efficient_2017}
+    average birth and death rate per day. this would illustrate why convergence is rather slow}
 
     In the previous experiments we have seen that the cowards experience an increase in population, while the \altruists themselves do not benefit all too much.
     To fix this unfairness/inequality and introduce another experiment we consider the case where \altruists only help each other out.
@@ -327,7 +361,7 @@
 
     \subsubsection*{Experiment 1: Stable Environment}
     As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
-   \todo{This acts as an insurance of the quality of further expirements.}
+    \todo{This acts as an insurance of the quality of further expirements.}
     As can be seen in \Cref{fig:stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
 
     \begin{figure}
@@ -388,23 +422,23 @@
     \subsubsection*{Experiment 3: Greenbeard Altruism}
     \subsubsection*{Experiment 4: On Trust and More}
     \todo{
-        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
     }
 
 
     \section{Discussion}\label{sec:discussion}
     \todo{
-        Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
+    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-        If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
+    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
     }
 
 
     \section{Conclusion}\label{sec:conclusion}
     \todo{
-        Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
+    Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
     }
     \bibliographystyle{ACM-Reference-Format}
     \bibliography{bibliography}
