@@ -228,7 +228,7 @@
 
     \section{Method}\label{sec:method}
     This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
-    In general the situation can be thought of as follows.
+    In general the situation can be thought of as follows:
     Based on a starting population of \VNumPop, these \VNumPop agents compete for a certain amount of limited resources.
     We cap these at \VNumTrees, but allow one such resource to be shared by two agents, leading to effectively 2 * \VNumTrees resources.
     The reason for this is that two agents sharing a resource can help each other out in the case the resource turns out to be faulty.
@@ -237,21 +237,21 @@
     In the case that an agent is not able to access a resource, it ceases to live.
     This is done over \VNumDays days and averaged throughout \VNumSimulations simulations.
     We simulate this case with a variety of different agent types that act differently and enable various amounts of altruism.
-    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to help the agent-to-die and potentially end up dying itself instead.
-    We differentiate these by grouping them into different kinds of tribes/types.
+    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose \todo{to share its resource with the agent who obtained a faulty one with the potential to end up dying itself instead.} to help the agent-to-die and potentially end up dying itself instead.
+    We differentiate these by grouping them into four different kinds of tribes/types.
 
     To give it a more modern spin, we frame the story as being part of the job market.
-    Here an agent stands for a contractor, a resource for a job, with a faulty resource corresponding to a hard job where only one of the contractors gets paid.
-    In this simple scenario a contractor goes bankrupt if they cannot find a job for a day.
-    By taking on workload of the hard job from the other contractor who was bound to be fired, one is able to help the other survive with the risk of being fired oneself.
+    Here an agent stands for a contractor, a resource for a job, with a faulty resource corresponding to a \todo{difficult}hard job. where only one of the contractors gets paid.
+    In this simple scenario a contractor goes bankrupt if they cannot find a job for a day \todo{and when simulating the stable population, agents are not able to finish the job on time and both get fired}.
+    \todo{In altruisitc scenarios, by} By taking on workload of the hard job from the other contractor who was bound to be fired, one is able to help the other survive with the risk of being fired oneself.
 
-    \todo{Add code step by step}
+    \todo{Add code step by step, or config for each experiment in the appendix, whole code in general in the appendix}
 
 
     \subsubsection*{Experiment 1: Stable Environment}
     To create a general baseline for the simulations to take place in, we implement an environment that on average does not see any large population changes.
-    This can be used to compare against in regards to the different types of tribe logic when they come across a faulty resource problem.
-    Every night the surviving agents reproduce by themselves (aka no partner needed) leading to 1 or 2 offspring with a probability of \VProbKids.
+    This can be used to compare against in regards to the different types of type/tribe logic when they come across a faulty resource problem.
+    Every night the surviving agents reproduce by themselves (aka \todo{asexual} no partner needed) leading to 1 or 2 offspring with a probability of \VProbKids.
     The offspring are of the same tribe as the parent.
     In this baseline case this corresponds to the population only consisting of \cowards which do not help in faulty resource cases.
     These \cowards will be plotted in blue.
@@ -266,7 +266,7 @@
     We differentiate between the following two cases.
     If the surviving agent is of type \coward, he runs away and lets the other one die.
     If however the survivor is a \sucker, it helps out the to-die one by putting the load from the other agent onto himself.
-    With a defined probability of \VProbAltruistDies, the \sucker fails and ends up sacrificing themself for the other.
+    With a defined probability of \VProbAltruistDies, the \sucker fails and ends up sacrificing themselves for the other.
     In the other case that it ends up succeeding however, a net-positive is achieved regarding the population as both agents sharing the faulty resource are then able to live on.
     We plot the \suckers in yellow.
 
@@ -274,7 +274,7 @@
     \todo{add code with logic}
 
     \subsubsection*{Experiment 3: Greenbeard Altruism}
-    \todo{Building up on the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.}
+    \todo{Building up on the previous experiment we introduce a fairer notion, where \todo{\suckers obtain a greenbeard gene which allows them to differentiate between their own kind and suckers}\greenbeards only help out other \greenbeards.}
 
     \subsubsection*{Experiment 4: On Trust and More}
     \todo{A final experiment introduces further types next to the altruist.
@@ -296,7 +296,7 @@
     This should ensure that the population of the \altruists are able to hold together and increase in size while the number of non-cooperative \cowards gets reduced.
 
     Looking at \Cref{fig:alt_ego} we can see that this hypothesis is the case.
-    We see that there's a general positive trend to be made out.
+    We see that there is a general positive trend to be made out.
     This can further be seen in \Cref{fig:alt_ego_rel} where we have plotted the relative distribution of the different types.
     On average a slight relative population increase of the \altruists can be observed.
 
@@ -319,14 +319,15 @@
     In the following section we present the results of our experiments.
 
     We note that for our hypothesis and insights we primarily look at the average of the results of our \VNumSimulations simulations.
-    The colours denote the different kinds of tribes and their respective behaviours when they are the survivor in a faulty resource situation.
+    The colours denote the different kinds of tribes/types and their respective behaviours when they are the survivor in a faulty resource situation.
     Blue stands for \cowards which never help out.
     Yellow denotes \suckers which always help out.
     Red stands for \impostors which appear to others as they would help out but in fact do not.
-    Green denotes \greenbeards which help out other seemingly altruistic agents (aka suckers, greenbeards and impostors).
+    Green denotes \greenbeards which help out other seemingly altruistic agents (aka \todo{suckers}, greenbeards and impostors).
 
     \subsubsection*{Experiment 1: Stable Environment}
     As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
+   \todo{This acts as an insurance of the quality of further expirements.}
     As can be seen in \Cref{fig:stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
 
     \begin{figure}
@@ -360,7 +361,7 @@
     A potential explanation for this could be that in general the birth-rate for the \altruists is much lower than their die-off rate given their altruistic sacrifices.
     The cowards on the other hand, while having the same birth-rate, experience lower die-off-rates due to running away from a predator.
     If we compare this to the original experiment without any altruism (\Cref{fig:stable_pop}), we see that this altruistic thinking has a large net-positive effect.
-    This is the case even though the \altruists do not differentiate between who they save.
+    This is the case even though the \altruists do not differentiate between whom they save.
 %    \todo{play around with settings so that they do die out and the following experiment makes more sense}
 
     \begin{figure}
@@ -373,7 +374,7 @@
 
     In the following \Cref{fig:alt_cow_separated_rel} we see how these different types stack against each other when compared in relative terms.
     With a sharp increase right at the beginning on, \~ 80\% of the population consists of cowards by day 2500.
-    While there are some runs where the \suckers were able to gain traction and constitute the majority at around day 1000,by day 5000 the population consists ov pretty much \cowards only.
+    While there are some runs where the \suckers were able to gain traction and constitute the majority at around day 1000, by day 5000 the population consists of \todo{i think we should be more precise aka 80\% \cowards} pretty much \cowards only.
 
 
     \begin{figure}
