@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from core import config
 from core.Blob import Blob, TYPES
 from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
-    PLOT_RELATIVE
+    PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE
 
 from core.events.day import day
 
@@ -61,6 +61,8 @@ def simulation():
 
 
 def separate_by_type(pop_hist):
+    if PLOT_TOTAL:
+        return {TOTAL_TYPE: [len(pop) for pop in pop_hist]}
     pop_hists_by_type = {type: [] for type in POP_TYPES.keys()}
     for agent_list in pop_hist:
         counts = {type: 0 for type in POP_TYPES.keys()}
@@ -75,7 +77,8 @@ def separate_by_type(pop_hist):
 
 def main():
     blob_histories = [0] * NUM_SIMULATIONS
-    count_histories_dict = {type: [[] for _ in range(NUM_SIMULATIONS)] for type in POP_TYPES.keys()}
+    count_histories_dict = {type: [[] for _ in range(NUM_SIMULATIONS)]
+                            for type in (POP_TYPES.keys() if not PLOT_TOTAL else [TOTAL_TYPE])}
     for i in range(0, NUM_SIMULATIONS):
         reset_environment()
         blob_hist = simulation()
