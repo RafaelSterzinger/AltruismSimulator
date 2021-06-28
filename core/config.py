@@ -41,16 +41,6 @@ POPULATION_SIMULATION = False  # 1
 PLOT_TOTAL = False
 EXP_2 = False
 
-# CHANGE HERE: Plot to run
-PLOT_TOTAL = False
-EXP_2 = True
-
-PLOT_RELATIVE = False  # 3, 4
-
-# Exp 1
-if POPULATION_SIMULATION:
-    PLOT_RELATIVE = False  # 3, 4
-    POP_TYPES = {1: 1}
 
 # Exp 2
 if PLOT_TOTAL:

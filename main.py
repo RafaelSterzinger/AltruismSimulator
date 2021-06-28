@@ -1,6 +1,8 @@
+import importlib
 import itertools
 import os
 import random
+import sys
 from _operator import add
 from operator import truediv
 
@@ -9,6 +11,10 @@ import matplotlib.pyplot as plt
 
 from core import config
 from core.Blob import Blob, TYPES
+
+# needs to be before core.config import
+if len(sys.argv) > 1:
+    importlib.import_module(f'core.experiments.{sys.argv[1]}')
 from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
     PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE
 
