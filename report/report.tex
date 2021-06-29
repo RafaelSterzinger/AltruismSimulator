@@ -67,40 +67,50 @@
 
     %\todo{In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result.}
 
-    \todo{relate this to related work/experiments}
-
-    In this work, we conduct a variety of experiments to analyze how different levels of cooperation and environment settings affect a population and the development of the respective types/tribes within.
-    For this we run \VNumSimulations, each spanning \VNumDays and visualize the average results of those runs.
+    Based on this idea of fitness, different survival strategies can occur in nature, for instance, there are as many games where cooperative strategies succeed as ones where deflection perform better.
+    Being heavily influenced by the amount of information an actor has over another \cite{wallace_misinformation_1973}, in our work, we want to add an additional layer of difficulty by introducing misinformation.
+    Here, the goal is that misinformation might give an actor a distorted perception on the behaviour of other kinds, i.e. resulting in the existence of so-called impostors (see \Cref{sec:hypothesis}).
+    Similar research has previously been conducted, with the closest being the work by \citeauthor{szamado_deception_2016} \cite{szamado_deception_2016} where they looked at the influence of noisy gossip on cooperative behaviour in an indirect reciprocity setting via image scoring (see \Cref{sec:related_work}).
+    As opposed to our work, actors can adaptively change their reputation by being more cooperatively, whereas we explore the idea of misinformation from a more static point of view, that is, an actor decides from the beginning onwards whether it wants to cooperate or not.
+    
+    For this, we conduct a variety of experiments to analyze how different levels of cooperation and environment settings affect a population and the development of respective types/tribes within.
+    With these simulations, we seek to provide a profound answer to the question on whether it is possible for cooperative behaviour to co-exist in reputation based settings where misinformation give rise to disguised cheats.
+    These simulations consist of \VNumSimulations runs, each spanning \VNumDays time steps where we visualize and analyze the average results of those runs.
     The general environment looks as follows.
-    Based on a starting population of \VNumPop, these starting agents compete for \VNumTrees possible jobs to win money every day.
+    Based on a starting population of \VNumPop, these starting agents compete for \VNumTrees possible jobs to earn money every day.
     One of these jobs enables up to 2 agents to live on as they can be split, without changing any outcome.
-    To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job option, he goes bankrupt and dies out.
+    To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job option, he goes bankrupt and dies out, hence limiting the total population size.
     On top of that, not every one of the jobs is a guaranteed win.
-    With a certain probability \VProbPredator an option is considered to be hard and if only one agent has taken on that job, he dies out.
-    If there are two agents taking on a hard job, in the general case only one of the two is able to win while the other dies out (randomly chosen).
-    This can be thought of as the company offering a hard job only being content with one of the agents and not paying the other.
+    With a certain probability of \VProbPredator a job is considered to be hard and if only one agent has taken on that job, he dies out.
+    Here, the possibility of cooperation arises: if an agent with a normal job decides to help an agent with a hard job, the agent who was previously doomed to die will survive.
+    However, this comes at the risk that the previously safe agent might not be abel to finish its task on time and, thus might go bankrupt.
+    We say that with a certain probability \VProbAltruistDies the helping agent fails and ends up sacrificing itself for the other.
 
 
     \begin{enumerate}
-        \item In our first experiment we create a stable environment so that the population without any kind of certain type/tribe logic would stay roughly the same.
+        \item In our first experiment we create a stable environment so that the population without any kind of certain type/tribe logic would stay roughly the same. Therefore, agents are not able to split a hard job between each other.
 
-        \item Next we introduce altruistic thinking.
-        As such, an altruist helps out the other person they are sharing a hard job with.
-        By doing so, the other person is able to live on while the helping altruist now has the burden of doing both job options.
-        We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
-        In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.
+        \item Next, we introduce altruistic thinking.
+        As such, an altruist (later called \sucker) always tries to help out an agent assigned with a hard job.
+        By doing so, the other agent is able to live on while the helping altruist now has the burden of doing both job options with the possibility of failing its original one.
+        In the case that both of them are able to finish on time, a net-positive gain is achieved regarding the population size as both agents are then able to live on.
 
-        \item Building upon the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.
+        \item Building upon the previous experiment, we introduce a fairer notion where altruists turn into \greenbeards that only help out other \greenbeards.
+        Thus, they ignore uncooperative agents that do not bear the green beard allele.
 
         \item A final experiment introduces further types next to the altruist.
-        The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
+        The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like \greenbeards, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
+        Here, the portion of \impostors act as a resemblance of misinformation spread in a population, i.e. the more \impostors, the more the perception on the behaviour of agents is distorted.
 
     \end{enumerate}
 
     We analyze these cases with a variety of different parameters which are explained in further detail in \Cref{sec:method} and \Cref{sec:results}.
-    % explain in further detail in Method part
 
     \todo{Mention central results and key insight briefly.}
+
+    The rest of this section acts as a general introduction of the terminology used in literature to describe cooperative behaviour.
+    Hence, we provide a general taxonomy starting with overview term of inclusive fitness, followed by the more granular distinction between direct and indirect fitness.
+    The last part focuses on indirect reciprocity which we separated from the other section in order to put more emphasise on it as it plays a key role for our research question.
 
 
     \section{Inclusive Fitness}\label{sec:inclusive-fitness}
@@ -171,7 +181,7 @@
     To visualize this, one can think of a gene that is responsible for the growth of a green beard where those affected individuals end up cooperating between themselves~\cite{SelfishGeneRichard}.
     Note that this holds true even if the gene does not manifest itself visually, but leads to association between gene-sharers (e.g. a social gene; social people tend to stick with social people).
 
- An example of this green beard phenomenon occurring in nature was discovered by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} where they found a spiteful green beard allele in the red imported fire ant species.
+    An example of this green beard phenomenon occurring in nature was discovered by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} where they found a spiteful green beard allele in the red imported fire ant species.
     Here, worker ants wearing a certain type of allele (bearer) are able to distinguish and lure queens of a different type (non-bearer) by odour cues and execute them resulting in fitness benefits for the worker ants.
 
     In real life this also opens up the possibility for \textit{falsebeards} which do seem to have inherited the same gene from the outside, but in fact do not end up cooperating as expected.
@@ -221,7 +231,7 @@
 
     \begin{figure*}
         \includegraphics[width=\textwidth]{figures/indirect_reciprocity}
-        \caption{The relation/similarity between direct and indirect recprocity, and image scoring and relatedness/the green beard phenomenon \cite{roberts_kin_2019}.}
+        \caption{The relation/similarity between direct and indirect reciprocity, and image scoring and relatedness/the green beard phenomenon \cite{roberts_kin_2019}.}
         \label{fig:indirect_reciprocity}
     \end{figure*}
 
@@ -229,7 +239,7 @@
     Important for our experiments is the idea that in absence of actual relatedness green beard types are observed that help individuals to distinguish between contributors and free riders \cite{roberts_kin_2019}.
 
 
-    \section{Hypothesis}
+    \section{Hypothesis}\label{sec:hypothesis}
     Inspired by the work of \citeauthor{milinski_cooperation_2002} \cite{milinski_cooperation_2002} and the additional insights from \citeauthor{roberts_kin_2019} \cite{roberts_kin_2019}, we found the idea of image scoring and how it can enforce cooperation in a public goods game without/little punishment very interesting.
     Given the idea that this image score is mostly spread via gossip in our society, we pose the question on whether this gossip can always be trusted.
     Similarly to the game "Chinese Whispers/Telephone", we argue that gossip might be altered by some noise over time resulting in a scenario where agents with an actual bad image score might be perceived as being cooperative.
@@ -243,7 +253,7 @@
     In order to be more concrete, we argue that the more noise is injected in $q$ from \Cref{eq:qb-c} or in other words, the more imposters are prominent, the rarer it is to observe cooperative behaviour.
 
 
-    \section{Related Work}
+    \section{Related Work}\label{sec:related_work}
     One of the first more extensive studies on information and its influence on a species' fitness was explored by \citeauthor{wallace_misinformation_1973} \cite{wallace_misinformation_1973} where he built upon the claim by \citeauthor{fisherGeneticalTheoryNatural1930} \cite{fisherGeneticalTheoryNatural1930} and proved its correctness, that is, if misinformation is spread it should highly deviate from the truth.
     He explained first why accurate information about one's environment is of great importance and that deception of information results in a loss of the recipient's fitness and formally proved second that slightly misleading information has a probability of one half to improve the fitness of the actor.
     Hence, information must be highly misleading to be truly effective.
@@ -262,9 +272,10 @@
 
     In a later work from \citeyear{whitaker_indirect_2018}, \citeauthor{whitaker_indirect_2018} \cite{whitaker_indirect_2018} looked at the evolution of prejudicial groups in indirect reciprocity interactions between actors.
     As prejudice is an opinion about other actors, not based on reason or experience, it is similar to the spread of misinformation concerning the reputation of actors belonging to different groups, hence, explaining the relatedness to our work.
-    With the help of computer simulations they were able to show the co-evolution of prejudicial groups and cooperative behaviour, despite the general view of those being opposing forces.
-    However, cooperative behaviour is structural limited in a population as prejudice limits cooperation to flourish solely in isolated groups which have the same opinion on outsiders.
-    This shows that cooperation can still exist even with perturbed information or intentionally spread lies.
+    With the help of computer simulations they were able to show co-evolution of prejudicial groups and cooperative behaviour, despite the general view of those being opposing forces.
+    However, prejudice restricts the ability of cooperation to flourish somehow as cooperative behaviour can solely be observed in isolated groups that have the same opinion on particular groups of outsiders.
+    This shows, although being limited, that cooperation can still exist even with perturbed information or intentionally spread lies.
+
 
     \section{Method}\label{sec:method}
     This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
@@ -432,12 +443,9 @@
 
 
     \section{Discussion}\label{sec:discussion}
-    \todo{
-    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
-    }
+    %\todo{Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation. If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.}
 
 
     \section{Conclusion}\label{sec:conclusion}
