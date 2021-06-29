@@ -332,8 +332,19 @@
     This should ensure that the population of the \altruists are able to hold together and increase in size while the number of non-cooperative \cowards gets reduced.
 
     \subsubsection*{Experiment 4: On Trust and More}
-    \todo{A final experiment introduces further types next to the altruist.
-    The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).}
+    Next to the previously introduced concept of altruism, we add another social concept similar to the one of trust.
+    In this final experiment we extend our pool of tribes/types by one that distorts the common belief of trust with their faulty resource response, \impostors.
+    When these are confronted with a difficult job situation and are bound to be the one to die, they appear to be \greenbeards to others and are as such rescued by \suckers and \greenbeards.
+    However, when they are the potential rescuer in a difficult job situation, they act as \cowards and do not help out.
+    This leads to the interesting situation, where a gene appears to be present without the expected behaviour that accompanies it, allowing the affected to have their cake and eat it too.
+
+    In the end, the types we consider are:
+    \begin{itemize}
+        \item \cowards: never help with hard jobs (yellow)
+        \item \suckers: always help with hard jobs (blue)
+        \item \impostors: look like altruists, but never help (red)
+        \item \greenbeards: only help other (apper-to-be) greenbeards, aka \impostors and \greenbeards (green)
+    \end{itemize}
 
 
 %    {
@@ -341,13 +352,17 @@
 %        If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
 %    }
 %
-    \todo{
-    Algorithms regarding matching
-    \cite{geffen_efficient_2017}
-    average birth and death rate per day. this would illustrate why convergence is rather slow}
+%    \todo{
+%        Algorithms regarding matching
+%        \cite{geffen_efficient_2017}
+%        average birth and death rate per day. this would illustrate why convergence is rather slow}
 
 
     \section{Results}\label{sec:results}
+%    {
+%        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+%    }
+
     In the following section we present the results of our experiments.
 
     We note that for our hypothesis and insights we primarily look at the average of the results of our \VNumSimulations simulations.
@@ -445,10 +460,19 @@
     \end{figure}
 
     \subsubsection*{Experiment 4: On Trust and More}
-    \todo{
-    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
-    }
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/exp4_impostor}
+        \caption{}
+    \label{fig:exp4_impostor}
+    \end{figure}
+
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/exp4_impostor_rel}
+        \caption{}
+        \label{fig:exp4_impostor_rel}
+    \end{figure}
 
 
     \section{Conclusion}\label{sec:conclusion}
