@@ -2,10 +2,13 @@ import sys
 
 import core.config as cfg
 
-cfg.POP_TYPES = {0: 0.5,
-                 1: 0.5}
+cfg.POP_TYPES = {0: 0.25,
+                 1: 0.25,
+                 2: 0.25,
+                 3: 0.25}
 cfg.PLOT_RELATIVE = False
-cfg.PLOT_TOTAL = True
+cfg.PLOT_TOTAL = False
+cfg.GREEN_BEARD = True  # has to be true
 
 if len(sys.argv) > 2:
     cfg.PLOT_RELATIVE = bool(sys.argv[1])
