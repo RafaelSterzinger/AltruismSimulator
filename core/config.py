@@ -17,7 +17,7 @@ PROB_ALTRUIST_DIES = 0.5
 
 T_COW = 0  # coward
 T_SUC = 1  # sucker
-T_ALT = 2  # altruist
+T_GRE = 2  # greenbeard
 T_IMP = 3  # impostor
 POP_TYPES = {0: 0.25,
              1: 0.25,
@@ -39,12 +39,3 @@ PLOT_RELATIVE = True  # 3, 4
 GREEN_BEARD = False  # 5
 POPULATION_SIMULATION = False  # 1
 PLOT_TOTAL = False
-EXP_2 = False
-
-
-# Exp 2
-if PLOT_TOTAL:
-    PLOT_RELATIVE = False  # 3, 4
-if EXP_2:
-    POP_TYPES = {0: 0.5,
-                 1: 0.5}

@@ -171,7 +171,7 @@
     To visualize this, one can think of a gene that is responsible for the growth of a green beard where those affected individuals end up cooperating between themselves~\cite{SelfishGeneRichard}.
     Note that this holds true even if the gene does not manifest itself visually, but leads to association between gene-sharers (e.g. a social gene; social people tend to stick with social people).
 
- An example of this green beard phenomenon occurring in nature was discovered by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} where they found a spiteful green beard allele in the red imported fire ant species.
+    An example of this green beard phenomenon occurring in nature was discovered by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} where they found a spiteful green beard allele in the red imported fire ant species.
     Here, worker ants wearing a certain type of allele (bearer) are able to distinguish and lure queens of a different type (non-bearer) by odour cues and execute them resulting in fitness benefits for the worker ants.
 
     In real life this also opens up the possibility for \textit{falsebeards} which do seem to have inherited the same gene from the outside, but in fact do not end up cooperating as expected.
@@ -266,6 +266,7 @@
     However, cooperative behaviour is structural limited in a population as prejudice limits cooperation to flourish solely in isolated groups which have the same opinion on outsiders.
     This shows that cooperation can still exist even with perturbed information or intentionally spread lies.
 
+
     \section{Method}\label{sec:method}
     This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
     In general the situation can be thought of as follows.
@@ -314,7 +315,9 @@
     \todo{add code with logic}
 
     \subsubsection*{Experiment 3: Greenbeard Altruism}
-    \todo{Building upon the previous experiment we introduce a fairer notion, where \suckers obtain a greenbeard gene which allows them to differentiate between their own kind and \cowards.}
+    To introduce a more realistic and fair version of "altruism" we let the \suckers obtain a greenbeard gene which allows them to differentiate between their own kind and \cowards.
+    By doing this, in the faulty resource scenario the newly introduced \greenbeards decide to only help out other \greenbeards that would return the favour if the positions were changed.
+    Thus in the third experiment, we analyze how the population fares when it consists of 50\% \cowards and 50\% \greenbeards.
 
     \subsubsection*{Experiment 4: On Trust and More}
     \todo{A final experiment introduces further types next to the altruist.
@@ -327,32 +330,9 @@
 %    }
 %
     \todo{
-    Algorithms regarding matching
-    \cite{geffen_efficient_2017}
-    average birth and death rate per day. this would illustrate why convergence is rather slow}
-
-    In the previous experiments we have seen that the cowards experience an increase in population, while the \altruists themselves do not benefit all too much.
-    To fix this unfairness/inequality and introduce another experiment we consider the case where \altruists only help each other out.
-    This should ensure that the population of the \altruists are able to hold together and increase in size while the number of non-cooperative \cowards gets reduced.
-
-    Looking at \Cref{fig:alt_ego} we can see that this hypothesis is the case.
-    We see that there is a general positive trend to be made out.
-    This can further be seen in \Cref{fig:alt_ego_rel} where we have plotted the relative distribution of the different types.
-    On average a slight relative population increase of the \altruists can be observed.
-
-
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/alt_ego}
-        \caption{\todo{}}
-        \label{fig:alt_ego}
-    \end{figure}
-
-
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/alt_ego_rel}
-        \caption{\todo{}}
-        \label{fig:alt_ego_rel}
-    \end{figure}
+        Algorithms regarding matching
+        \cite{geffen_efficient_2017}
+        average birth and death rate per day. this would illustrate why convergence is rather slow}
 
 
     \section{Results}\label{sec:results}
@@ -424,25 +404,48 @@
 
 
     \subsubsection*{Experiment 3: Greenbeard Altruism}
+    In the previous experiments we have seen that the cowards experience an increase in population, while the \altruists themselves do not benefit all too much.
+    To fix this unfairness/inequality and introduce another experiment we consider the case where \altruists only help each other out.
+    This should ensure that the population of the \altruists are able to hold together and increase in size while the number of non-cooperative \cowards gets reduced.
+
+    Looking at \Cref{fig:exp3_greenbeard} we can see that this hypothesis is the case.
+    We see that there is a general positive trend to be made out.
+    This can further be seen in \Cref{fig:exp3_greenbeard_rel} where we have plotted the relative distribution of the different types.
+    On average a slight relative population increase of the \altruists can be observed.
+
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/exp3_greebeard}
+        \caption{\todo{}}
+        \label{fig:exp3_greenbeard}
+    \end{figure}
+
+
+    \begin{figure}
+        \includegraphics[width=\columnwidth]{figures/exp3_greenbeard_rel}
+        \caption{\todo{}}
+        \label{fig:exp3_greenbeard_rel}
+    \end{figure}
+
     \subsubsection*{Experiment 4: On Trust and More}
     \todo{
-    In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
+        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
 
     }
 
 
     \section{Discussion}\label{sec:discussion}
     \todo{
-    Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
+        Sometimes you might have had a great idea, but it did not pan out. Since we want to encourage novelty, such failed attempts should also go into the report. This section is a suitable place to discuss this. If you can, do not just list failed attempts, but actually \emph{discuss} them, i.e., provide an intuition why you think they failed or what the problem is that prevented them from performing better. It is much better to describe one failed attempt and discuss it in-depth than just listing four failed models without any explanation.
 
-    If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
+        If you do not have failed attempts that would warrant their own section, this is perfectly fine. You may discuss the experiments from the previous section here, or if you prefer to have the discussion the evaluation section directly, feel free to omit this section entirely.
 
     }
 
 
     \section{Conclusion}\label{sec:conclusion}
     \todo{
-    Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
+        Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.
     }
     Lastly, they mention how countermeasures, i.e. employing punishment, which maintain a truthful image scoring system allow cooperation to be restored again. \cite{szamado_deception_2016}
     \bibliographystyle{ACM-Reference-Format}

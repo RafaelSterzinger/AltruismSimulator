@@ -4,7 +4,7 @@ from collections import Counter
 import numpy as np
 
 from core.Blob import Blob
-from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR, T_ALT, T_COW, T_IMP, T_SUC, PROB_ALTRUIST_DIES, GREEN_BEARD, \
+from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR, T_GRE, T_COW, T_IMP, T_SUC, PROB_ALTRUIST_DIES, GREEN_BEARD, \
     POPULATION_SIMULATION
 
 
@@ -39,10 +39,10 @@ def day(pop: [Blob]):
 
                 agent_survi = pop[i_survi]
                 agent_eaten = pop[i_eaten]
-                if agent_survi.type == T_ALT or agent_survi.type == T_SUC:
+                if agent_survi.type == T_GRE or agent_survi.type == T_SUC:
                     # if only alt, help everyone or if alt green, help only other alt green or impostor
                     if (not GREEN_BEARD or agent_survi.type == T_SUC) or (
-                            agent_eaten.type == T_ALT or agent_eaten.type == T_IMP):
+                            agent_eaten.type == T_GRE or agent_eaten.type == T_IMP):
                         # originally eaten one survives when altruist yells
                         new_pop.append(pop[i_eaten])
                         if np.random.random() > PROB_ALTRUIST_DIES:
