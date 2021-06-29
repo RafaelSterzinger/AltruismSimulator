@@ -52,20 +52,20 @@
 
 
     \section{Introduction}\label{sec:introduction}
-    \todo{In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.}
+    %\todo{In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.}
 
 
     The evolution of cooperation is a question which has been bothering humanity for a long time.
     Not only is it open for debate in the fields of anthropology, sociology, and economy but also evolutionary biologist have tried to answer this question on multiple occasions \cite{gardner_theory_2009}.
-    Hence, in 2005, at the 125th anniversary issue of the American Association for the Advancement of Science (AAAS) they declared the question "How Did Cooperative Behavior Evolve?" to be one of the top 25 unsolved puzzles science is facing over the next quarter century \cite{aaas_125th_2005}.
+    Hence, in 2005, at the 125th anniversary issue of the American Association for the Advancement of Science (AAAS), they declared the question "How Did Cooperative Behavior Evolve?" to be one of the top 25 unsolved puzzles science is facing over the next quarter century \cite{aaas_125th_2005}.
 
     Already in the year \citeyear{darwin_origin_1859}, \citeauthor{darwin_origin_1859}'s natural selection theory tried to explain the underlying mechanisms of a growing population.
-    More helpful characteristics that lead to better reproduction will keep on spreading throughout the population.
-    This gives off the impression that certain traits will develop in order to optimize an individual's reproducibility (fitness). \citeauthor{fisherGeneticalTheoryNatural1930} builds up on this by introducing the notion of gene frequencies \cite{darwin_origin_1859}.\todo{citation missing/wrong?}
+    More helpful characteristics that lead to better reproduction will keep on spreading throughout the population \cite{darwin_origin_1859}.
+    This gives off the impression that certain traits will develop in order to optimize an individual's reproducibility (fitness). \citeauthor{fisherGeneticalTheoryNatural1930} builds upon this by introducing the notion of gene frequencies.
     Genes leading to higher individual fitness thus will increase in frequency and lead to a general increase in mean fitness \cite{fisherGeneticalTheoryNatural1930}.
 
 
-    %\{In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result. }
+    %\todo{In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result.}
 
     \todo{relate this to related work/experiments}
 
@@ -90,7 +90,7 @@
         We say that with a certain probability \VProbAltruistDies, the altruist fails and ends up sacrificing themself for the other.
         In the case that they end up succeeding however, it leads to a net-positive regarding the population size as both agents sharing the hard job are then able to live on.
 
-        \item Building up on the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.
+        \item Building upon the previous experiment we introduce a fairer notion, where \greenbeards only help out other \greenbeards.
 
         \item A final experiment introduces further types next to the altruist.
         The final types are \cowards (never help with hard jobs), \suckers (always help with hard jobs), \impostors (look like altruists, but never help) and  \greenbeards (only help other altruists, aka \impostors and \greenbeards).
@@ -171,12 +171,11 @@
     To visualize this, one can think of a gene that is responsible for the growth of a green beard where those affected individuals end up cooperating between themselves~\cite{SelfishGeneRichard}.
     Note that this holds true even if the gene does not manifest itself visually, but leads to association between gene-sharers (e.g. a social gene; social people tend to stick with social people).
 
+ An example of this green beard phenomenon occurring in nature was discovered by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} where they found a spiteful green beard allele in the red imported fire ant species.
+    Here, worker ants wearing a certain type of allele (bearer) are able to distinguish and lure queens of a different type (non-bearer) by odour cues and execute them resulting in fitness benefits for the worker ants.
+
     In real life this also opens up the possibility for \textit{falsebeards} which do seem to have inherited the same gene from the outside, but in fact do not end up cooperating as expected.
     We analyze this case in our final experiment by introducing \impostors.
-
-    \cite{west_altruism_2010}
-    \cite{bala_green_2017}
-    \cite{nowak_five_2006}
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/mechanisms}
@@ -245,27 +244,27 @@
 
 
     \section{Related Work}
-    One of the first more extensive studies on information and its influence on a species' fitness was explored by \citeauthor{wallace_misinformation_1973} \cite{wallace_misinformation_1973} where he built upon the claim by \citeauthor{fisherGeneticalTheoryNatural1931} \cite{fisherGeneticalTheoryNatural1930} and proved its correctness, that is, if misinformation is spread it should highly deviate from the truth.
+    One of the first more extensive studies on information and its influence on a species' fitness was explored by \citeauthor{wallace_misinformation_1973} \cite{wallace_misinformation_1973} where he built upon the claim by \citeauthor{fisherGeneticalTheoryNatural1930} \cite{fisherGeneticalTheoryNatural1930} and proved its correctness, that is, if misinformation is spread it should highly deviate from the truth.
     He explained first why accurate information about one's environment is of great importance and that deception of information results in a loss of the recipient's fitness and formally proved second that slightly misleading information has a probability of one half to improve the fitness of the actor.
     Hence, information must be highly misleading to be truly effective.
 
-    As describe in \Cref{sec:indirect_reciprocity}, image scoring is similar to relatedness/the green beard phenomenon which is why the concept of false beards plays a rather significant role for our research.
-    Described in multiple papers \cite{SelfishGeneRichard,roberts_kin_2019,west_altruism_2010}, cheating false beards play a significant role regarding cooperative behaviour.
-    Here, false beards describe the act where an entity disguises himself to be a bearer of a green beard allele, but is not.
+    As described in \Cref{sec:indirect_reciprocity}, image scoring is similar to relatedness/the green beard phenomenon which is why the concept of false beards plays a rather significant role for our research.
+    Described in multiple papers \cite{SelfishGeneRichard,roberts_kin_2019,west_altruism_2010}, the effect of cheating false beards are directly responsible for the non-existing of cooperative behaviour.
+    Here, a false beard describe the act where an entity disguises himself to be a bearer of a green beard allele, but is not.
     Hence, it is purposefully transmitting misinformation regarding is true intentions and, thus taking advantage of the altruism of truthful green beard bearers \cite{SelfishGeneRichard}.
-    For this reason, \citeauthor{SelfishGeneRichard} \cite{SelfishGeneRichard} argues that the green beard mechanism is of rare existence, hinting that cooperative behaviour based on the green beard phenomenon is rather unstable if misinformation about the true one's true strategy is spreaded.
-    However, there are certain exceptions occurring in nature such as the discovery by \citeauthor{keller_selfish_1998} \cite{keller_selfish_1998} of a spiteful green beard allele in the red imported fire ant species.
-    Here, worker ants wearing a certain type of allele (bearer) are able to distinguish and lure queens of a different type (non-bearer) by odour cues and execute them resulting in fitness benefits for the worker ants.
+    For this reason, \citeauthor{SelfishGeneRichard} \cite{SelfishGeneRichard} argues that the green beard mechanism is of rare existence, hinting that cooperative behaviour based on the green beard phenomenon is rather unstable if misinformation about true strategy of individuals is spread.
 
-    A more modern and very similar work to ours is the paper published by \citeauthor{szamado_deception_2016} where they specifically look at how gossip mechanisms in indirect reciprocity via image scoring influences cooperation.
-    The concentrated on the same idea as our where they posed the question of how random errors during gossip or even deceptive communication give rise to the collapse of cooperation.
+    A more modern and very similar work to ours is the paper published by \citeauthor{szamado_deception_2016} \cite{szamado_deception_2016} where they specifically looked at how gossip mechanisms in indirect reciprocity via image scoring influences cooperation.
+    They concentrated on the same idea as we did where they posed the question on how random errors during gossip or even deceptive communication give rise to the collapse of cooperation.
     Therefore, our work is complementary to theirs as we both pursue the same question, however, with a different methodological approach.
-    Resulting from their experiments, they empirically showed that allowing to spread deceptive information turns the image scoring based reputation worthless and thus cooperation rarer or non-existing.
+    Based on their experiments, they empirically showed that allowing the spread of deceptive information turns the image scoring based reputation worthless and, thus cooperation is rarer or non-existing.
     Additionally, as we expect equal outcomes of our experiments, their findings act as a sanity check for our results.
 
-    \cite{whitaker_indirect_2018}
-    \cite{bhui_how_2019}
-
+    In a later work from \citeyear{whitaker_indirect_2018}, \citeauthor{whitaker_indirect_2018} \cite{whitaker_indirect_2018} looked at the evolution of prejudicial groups in indirect reciprocity interactions between actors.
+    As prejudice is an opinion about other actors, not based on reason or experience, it is similar to the spread of misinformation concerning the reputation of actors belonging to different groups, hence, explaining the relatedness to our work.
+    With the help of computer simulations they were able to show the co-evolution of prejudicial groups and cooperative behaviour, despite the general view of those being opposing forces.
+    However, cooperative behaviour is structural limited in a population as prejudice limits cooperation to flourish solely in isolated groups which have the same opinion on outsiders.
+    This shows that cooperation can still exist even with perturbed information or intentionally spread lies.
 
     \section{Method}\label{sec:method}
     This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
@@ -299,7 +298,7 @@
 
     \subsubsection*{Experiment 2: General Altruism}
     For our second experiment we add another tribe to the \cowards, the \suckers.
-    We build up on our previous experiment but change the outcome when agents come across a faulty resource.
+    We build upon our previous experiment but change the outcome when agents come across a faulty resource.
     These implement altruistic thinking and would always aid the other agent (\suckers and \cowards) that shares the same faulty resource.
     In such a case, the bound-to-die agent gets to live on, while the \sucker now carries the risk of failing.
     If one agents arrives, it simply fails.
@@ -315,7 +314,7 @@
     \todo{add code with logic}
 
     \subsubsection*{Experiment 3: Greenbeard Altruism}
-    \todo{Building up on the previous experiment we introduce a fairer notion, where \suckers obtain a greenbeard gene which allows them to differentiate between their own kind and \cowards.}
+    \todo{Building upon the previous experiment we introduce a fairer notion, where \suckers obtain a greenbeard gene which allows them to differentiate between their own kind and \cowards.}
 
     \subsubsection*{Experiment 4: On Trust and More}
     \todo{A final experiment introduces further types next to the altruist.
