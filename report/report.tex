@@ -336,6 +336,7 @@
     When these are confronted with a difficult job situation and are bound to be the one to die, they appear to be \greenbeards to others and are as such rescued by \suckers and \greenbeards.
     However, when they are the potential rescuer in a difficult job situation, they act as \cowards and do not help out.
     This leads to the interesting situation, where a gene appears to be present without the expected behaviour that accompanies it, allowing the affected to have their cake and eat it too.
+    For this experiment we split the starting population equally across types.
 
     In the end, the types we consider are:
     \begin{itemize}
@@ -374,14 +375,14 @@
     \subsubsection*{Experiment 1: Stable Environment}
     As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
     \todo{This acts as a comparison for the quality of further experiments.}
-    As can be seen in \Cref{fig:stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
+    As can be seen in \Cref{fig:exp1_stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp1_stable_pop}
         \caption{\textit{Exp 1:} Without any sort of tribe logic, the populations consists of solely \cowards.
         With some deviations, the population stays on average roughly the same at around \VNumPop.
         Visualized are \VNumSimulations random runs in light and their average in dark blue. }
-        \label{fig:stable_pop}
+        \label{fig:exp1_stable_pop}
     \end{figure}
 
 
@@ -389,22 +390,22 @@
 
     We now analyze a more sophisticated way of survival by introducing concepts of collaboration and altruism.
 
-    A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:alt_cow_total}.
+    A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:exp2_total}.
     The population also reaches saturation pretty early on around day 1.500.
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_total}
         \caption{\textit{Exp 2:}As compared to the baseline case, introducing altruistic thinking leads to a big increase in and early saturation of population size.
         }
-        \label{fig:alt_cow_total}
+        \label{fig:exp2_total}
     \end{figure}
 
     We further analyze how this effect gets spread between the two types of agents.
-    In \Cref{fig:alt_cow_separated} we see that the amount of \suckers (aka altruists that help everyone) decreases steadily, while the population in general increases.
+    In \Cref{fig:exp2_sucker} we see that the amount of \suckers (aka altruists that help everyone) decreases steadily, while the population in general increases.
     This figure also shows that the amount of \cowards substantially increases.
     A potential explanation for this could be that in general the birth-rate for the \altruists is much lower than their die-off rate given their altruistic sacrifices.
     The cowards on the other hand, while having the same birth-rate, experience lower die-off-rates due to running away from a predator instead of helping.
-    If we compare this to the original experiment without any altruism (\Cref{fig:stable_pop}), we see that this altruistic thinking has a large net-positive effect.
+    If we compare this to the original experiment without any altruism (\Cref{fig:exp1_stable_pop}), we see that this altruistic thinking has a large net-positive effect.
     This is the case even though the \suckers do not differentiate between whom they save.
 %    \todo{play around with settings so that they do die out and the following experiment makes more sense}
 
@@ -413,18 +414,18 @@
         \caption{\textit{Exp 2:} Altruistic thinking leads to a large absolute increase in population.
         A saturation occurs around day 1.000, after which the increase in \cowards starts to slow down a little.
         By day 5.000 there are virtually no \suckers.}
-        \label{fig:alt_cow_separated}
+        \label{fig:exp2_sucker}
     \end{figure}
 
-    In the following \Cref{fig:alt_cow_separated_rel} we see how these different types stack against each other when compared in relative terms.
+    In the following \Cref{fig:exp2_sucker_rel} we see how these different types stack against each other when compared in relative terms.
     With a sharp increase right at the beginning on, $\sim 80\%$ of the population consists of cowards by day 2500.
     While there are some runs where the \suckers were able to gain traction and constitute close to the majority at around day 1.000, by day 5.000 the population consists of 99\% \cowards with the \suckers going extinct in most runs.
 
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_sucker_rel}
-        \caption{\textit{Exp 2:}With altruistic thinking the proportion of \suckers declines linearly, reaching 0 after around 5.000 days on average.}
-        \label{fig:alt_cow_separated_rel}
+        \caption{\textit{Exp 2:} With altruistic thinking the proportion of \suckers declines linearly, reaching 0 after around 5.000 days on average.}
+        \label{fig:exp2_sucker_rel}
     \end{figure}
 
 
@@ -445,7 +446,7 @@
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp3_greebeard}
-        \caption{When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 2.000 when the population saturates.
+        \caption{\textit{Exp 3:} When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 2.000 when the population saturates.
         After that the \greenbeards take over substantially.}
         \label{fig:exp3_greenbeard}
     \end{figure}
@@ -453,23 +454,45 @@
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp3_greenbeard_rel}
-        \caption{From a relative standpoint we see that the \greenbeard gene leads to a change in population composition.
+        \caption{\textit{Exp 3:} From a relative standpoint we see that the \greenbeard gene leads to a change in population composition.
         Constituting 42\% of the population at day 1.000 the \greenbeards end up at over 90\% by day 10.000.}
         \label{fig:exp3_greenbeard_rel}
     \end{figure}
 
     \subsubsection*{Experiment 4: On Trust and More}
+    In our final experiment we run our simulations with all the previously mentioned tribes/types and add the notion of trust.
+    We do this by introducing \impostors which to others appear as \greenbeards (allowing them to be rescued by other \greenbeards) but act as \cowards (not helping anyone) when they come across a difficult job situation in both positions respectively.
+    For the following plots we have ommitted visualizing single runs for clarity.
+
+    There are a few interesting insights that can be made out in such an environment.
+    Looking at \Cref{fig:exp4_impostor} the first thing that can be noticed is that the population increases faster in the \coward-\greenbeard only case (\Cref{fig:exp3_greenbeard}) which saturates around day 2.000.
+    Converging around day 1.500 this experiment shows closer tendencies to the \coward-\sucker scenario (\Cref{fig:exp2_sucker}.
+
+    Similarities to experiment 3 (\Cref{fig:exp3_greenbeard}) can still be made out in regards to the progression of the population types.
+    As before, when the population saturates, the altruistic tribes see a downwards trend.
+    At that point the amount of \impostors increases substantially while the \cowards can hold their own, decreasing only by around one third.
+
+    Analyzing the relative frequencies in \Cref{fig:exp4_impostor_rel} we see that the true altruists, the \suckers, are the first to go at around day 4.000.
+    The \greenbeards, now being on their own against the non-altruists, are able to hold on until day 8.000 at which they also go extinct.
+    After that, the proportion of \impostors and \cowards stays the same.
+    This makes sense as without any \greenbeards the \impostors do not differ from simple \cowards.
+    At the end the \impostors make up 80\% of the population while the \cowards take up 20 \%.
+
+
+    This adds to the belief that such a \impostor genome offsets the benefits of \greenbeards holding together.
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp4_impostor}
-        \caption{}
+        \caption{\textit{Exp 4:} The introduction of the \impostor genome in combination with all the other types leads to a faster population increase compared to the \coward-\greenbeard case in Experiment 3.}
     \label{fig:exp4_impostor}
     \end{figure}
 
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp4_impostor_rel}
-        \caption{}
+        \caption{\textit{Exp 4:} When looking at the relative frequencies of simulations encompassing all tribes we see a large decrease in the altruistic types.
+        On the other hand, \impostors increase linearly while the amount of \cowards only drops by around one third.
+        Plotted is only the average of the simulations for brevity.}
         \label{fig:exp4_impostor_rel}
     \end{figure}
 

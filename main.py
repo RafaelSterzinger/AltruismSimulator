@@ -16,7 +16,7 @@ from core.Blob import Blob, TYPES
 if len(sys.argv) > 1:
     importlib.import_module(f'core.experiments.{sys.argv[1]}')
 from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
-    PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE
+    PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE, PLOT_SINGLE_RUNS
 
 from core.events.day import day
 
@@ -93,7 +93,8 @@ def main():
         for k, v in count_hist_dict.items():
             count_histories_dict[k][i] = v
 
-        plot_dict_by_color(count_hist_dict, linewidth=0.1)
+        if PLOT_SINGLE_RUNS:
+            plot_dict_by_color(count_hist_dict, linewidth=0.1)
 
     # AVG
     avg_hist = {k: np.mean(v, axis=0) for k, v in

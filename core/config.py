@@ -25,7 +25,7 @@ POP_TYPES = {0: 0.25,
              3: 0.25}
 TOTAL_TYPE = -1
 POP_COLORS = {0: 'blue',
-              1: 'yellow',      # TODO: maybe not yellow as single run lines cannot be made out
+              1: 'yellow',  # TODO: maybe not yellow as single run lines cannot be made out
               2: 'green',
               3: 'red',
               TOTAL_TYPE: 'black'}
@@ -39,3 +39,4 @@ PLOT_RELATIVE = True  # 3, 4
 GREEN_BEARD = False  # 5
 POPULATION_SIMULATION = False  # 1
 PLOT_TOTAL = False
+PLOT_SINGLE_RUNS = True
