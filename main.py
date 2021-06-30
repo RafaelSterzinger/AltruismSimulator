@@ -119,7 +119,7 @@ def draw_stats(pop_hist: [int]):
     plt.xlabel('days')
     filepath = 'report/figures/archive/'
     os.makedirs(filepath, exist_ok=True)
-    plt.savefig(f'{filepath}{TIME_STR}.pdf')
+    plt.savefig(f'{filepath}{TIME_STR if not len(sys.argv) > 4 else sys.argv[4]}.pdf')
     plt.show()
 
 

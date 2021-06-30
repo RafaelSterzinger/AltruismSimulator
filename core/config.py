@@ -4,7 +4,7 @@ import numpy as np
 
 TIME_STR = time.strftime('%Y-%m-%d-%H-%M-%S')
 
-NUM_SIMULATIONS = 20
+NUM_SIMULATIONS = 30
 
 NUM_DAYS = 10000
 NUM_POP = 100
