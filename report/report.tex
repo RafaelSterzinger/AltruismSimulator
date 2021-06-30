@@ -8,8 +8,8 @@
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{amsmath} % for writing algorithms
 \usepackage{cleveref}
-\usepackage{pythonhighlight}
 \usepackage{subcaption}
+\usepackage{listings}
 
 % OWN COMMANDS
 \newcommand{\todo}[1]{{\color{red}{#1}}}
@@ -564,22 +564,30 @@
     \section*{Appendix}
 
     \subsection{Experiment Configurations}\label{sec:configs}
+    \subsubsection*{General Configuration}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/config.py}
+
+    \subsubsection*{Experiment 1}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/experiments/exp1_stable_pop.py}
+
+    \subsubsection*{Experiment 2}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/experiments/exp2_cow_alt.py}
+
+    \subsubsection*{Experiment 3}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/experiments/exp3_greenbeard.py}
+
+    \subsubsection*{Experiment 4}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/experiments/exp4_impostor.py}
 
     \subsection{Code}\label{sec:code}
-    \begin{python}
-        import numpy as np
+    \subsubsection*{Main}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../main.py}
 
-        def incmatrix(genl1,genl2):
-        m = len(genl1)
-        n = len(genl2)
-        M = None #to become the incidence matrix
-        VT = np.zeros((n*m,1), int)  #dummy variable
+    \subsubsection*{Blob Class}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/Blob.py}
 
-        #compute the bitwise xor matrix
-        M1 = bitxormatrix(genl1)
-        M2 = np.triu(bitxormatrix(genl2),1)
-        ...
-    \end{python}
-    \todo{add code and config}
+    \subsubsection*{Method for Type-Specific Behaviour}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/events/day.py}
+
     \todo{quick little readme}
 \end{document}

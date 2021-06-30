@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from core import config
-from core.Blob import Blob, TYPES
+from core.Blob import Blob
 
 # needs to be before core.config import
 if len(sys.argv) > 1:
