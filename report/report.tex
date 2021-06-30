@@ -9,6 +9,7 @@
 \usepackage{amsmath} % for writing algorithms
 \usepackage{cleveref}
 \usepackage{pythonhighlight}
+\usepackage{subcaption}
 
 % OWN COMMANDS
 \newcommand{\todo}[1]{{\color{red}{#1}}}
@@ -79,7 +80,7 @@
     For this, we conduct a variety of experiments to analyze how different levels of cooperation and environment settings affect a population and the development of respective types/tribes within.
     With these simulations, we seek to provide a profound answer to the question on whether it is possible for cooperative behaviour to co-exist in reputation based settings where misinformation gives rise to disguised cheats.
 
-    These simulations consist of \VNumSimulations runs, each spanning \VNumDays time steps where we visualize and analyze the average results of those runs.
+    These simulations consist of \VNumSimulations runs, each spanning \VNumDays days where we visualize and analyze the average results of those runs.
     The general environment looks as follows: based on a starting population of \VNumPop, these starting agents compete for $2 \times \VNumTrees$ possible jobs to earn money every day.
     Furthermore, one or two agents are assigned to a department where they work on their individual task resulting in \VNumTrees overall departments.
     To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job option, he goes bankrupt and dies out, hence limiting the total population size.
@@ -177,7 +178,7 @@
 
     \subsubsection{Green Beard}
     Compared to the previously mentioned cases of altruism (help out everyone or help out own kin) another form of altruism can be noted.
-    According to \citeauthor{hamiltonInnateSocialAptitudes1975}, for there to be indirect fitness benefits, the occurrence of the same genetic strain plays a role and not the kinship itself~\cite{hamiltonInnateSocialAptitudes1975} (see \Cref{fig:mechanisms}D).
+    According to \citeauthor{hamiltonInnateSocialAptitudes1975}, for there to be indirect fitness benefits, the occurrence of the same genetic strain plays a role and not the kinship itself~\cite{hamiltonInnateSocialAptitudes1975} (see \Cref{fig:mechanisms} D).
     A certain trait or characteristic can be used to differentiate between sharers of the same gene variation and thus used to decide on whom to help.
     Natural selection here takes place in regard to that certain gene.
     To visualize this, one can think of a gene that is responsible for the growth of a green beard where those affected individuals end up cooperating between themselves~\cite{SelfishGeneRichard}.
@@ -372,8 +373,6 @@
     Red stands for \impostors which appear to others as they would help out but in fact do not.
     Green denotes \greenbeards which help out other seemingly altruistic agents (aka suckers, greenbeards and impostors).
 
-    \todo{exchange day with time step}
-    
     \subsubsection*{Experiment 1: Stable Environment}
     As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
     As can be seen in \Cref{fig:exp1_stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
@@ -467,20 +466,36 @@
 
     There are a few interesting insights that can be made out in such an environment.
     Looking at \Cref{fig:exp4_impostor} the first thing that can be noticed is that the population increases faster in the \coward-\greenbeard only case (\Cref{fig:exp3_greenbeard}) which saturates around day 2.000.
-    Converging around day 1.500 this experiment shows closer tendencies to the \coward-\sucker scenario (\Cref{fig:exp2_sucker}).
+    Converging at around day 1.500, this experiment shows closer tendencies to the \coward-\sucker scenario (\Cref{fig:exp2_sucker}).
 
-    Similarities to experiment 3 (\Cref{fig:exp3_greenbeard}) can still be made out in regards to the progression of the population types.
+    Similarities to experiment 3 (\Cref{fig:exp3_greenbeard}) can still be made out in regard to the progression of the population types.
     As before, when the population saturates, the altruistic tribes see a downwards trend.
     At that point the amount of \impostors increases substantially while the \cowards can hold their own, decreasing only by around one third.
 
-    Analyzing the relative frequencies in \Cref{fig:exp4_impostor_rel} we see that the true altruists, the \suckers, are the first to go at around day 4.000.
+    Analyzing the relative frequencies in \Cref{fig:exp4_impostor_rel}, we see that the true altruists, the \suckers, are the first to go at around day 4.000.
     The \greenbeards, now being on their own against the non-altruists, are able to hold on until day 8.000 at which they also go extinct.
     After that, the proportion of \impostors and \cowards stays the same.
     This makes sense as without any \greenbeards the \impostors do not differ from simple \cowards.
     At the end the \impostors make up 80\% of the population while the \cowards take up 20 \%.
 
+    This adds to the belief that such a \impostor genome offsets the benefits of \greenbeards holding together, supporting our first hypothesis (see \Cref{sec:hypothesis}) that misinformation has a major impact on the effectiveness of cooperation.
 
-    This adds to the belief that such a \impostor genome offsets the benefits of \greenbeards holding together.
+    In addition to the previously conducted experiment, we also wanted to explore whether different sized starting proportions of \impostors and \greenbeards allow a co-existence of cooperative behaviour in a dishonest society.
+    Here, the share of \impostors resembles the amount of spread misinformation that results in distorted beliefs on other agents' behaviour/reputation.
+    Keeping the sizes of \cowards and \suckers fixed, we vary the ratio of \greenbeards and \impostors.
+    Since previous runs with equally sized starting shares of tribes/type showed that altruistic behaviour is domed to go extinct, we wanted to give altruistic behaviour a second chance and thus varied the proportion of \impostors between 1\% and 25\%, resulting in runs with 1\%, 5\%, 10\%, and 25\% of \impostors at the beginning.
+    The results of these simulations are visualized in \Cref{fig:misinformation}.
+
+    Looking at these results, additional interesting trends can be made out.
+    For instance, in three (\Cref{fig:misinformation} b, c, and d) out of four settings, altruistic behaviour always goes extinct or is about to die out soon.
+    Only in one scenario (\Cref{fig:misinformation} a), where the proportion of \impostors starts out with 1\%, \greenbeards were sometimes capable to survive ($\sim 71\%$ of the runs) as \impostors went extinct by chance which explains the stagnation at around day 8.000.
+
+    This provides evidence for our second hypothesis that as soon as misinformation gets introduced to the setting, altruism via cooperation gets unstable quickly and that the amount actually does not play a significant role.
+    It is rather the case that \greenbeards can only survive if, in earlier stages of the simulations, \impostors go extinct by encountering too many faulty resources and do not receive help (encountering \cowards, or being the only one at a resource).
+
+    Another interesting insight from these settings is the fact that altruistic behaviour seems to stick around longer depending on the initial proportion of \greenbeards but still goes extinct eventually.
+    Furthermore, one final surprising observation can be made by looking at \Cref{fig:misinformation} a, i.e. a setting dominated by \greenbeards.
+    In this case, green beard altruism showed its effectiveness again, similar to experiment 3 (\Cref{fig:exp3_greenbeard_rel}), where \cowards die out again in addition to \suckers.
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp4_impostor}
@@ -497,11 +512,45 @@
         \label{fig:exp4_impostor_rel}
     \end{figure}
 
+    \begin{figure*}
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/exp4_impostor_1}
+            \label{fig:1_imp}
+            \caption{1\% \impostors (49\% \greenbeards)}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/exp4_impostor_5}
+            \label{fig:5_imp}
+            \caption{5\% \impostors (45\% \greenbeards)}
+        \end{subfigure}
+        \vskip\baselineskip
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/exp4_impostor_10}
+            \label{fig:10_imp}
+            \caption{10\% \impostors (40\% \greenbeards)}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.475\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/exp4_impostor_rel}
+            \label{fig:25_imp}
+            \caption{25\% \impostors (25\% \greenbeards)}
+        \end{subfigure}
+        \caption{\textit{Exp 4:} Keeping the shares of \cowards and \suckers fixed, and only varying the ratio between \greenbeards and \impostors three interesting observations can be made: (i) in most of the runs altruistic behaviour goes extinct eventually with the exception of setting \textit{a}, (ii) a higher proportion of \greenbeards allows cooperative behaviour to survive longer, and (iii) in populations dominated by \greenbeards, \cowards die out again.
+        }
+        \label{fig:misinformation}
+    \end{figure*}
 
-    \todo{add different levels of starting impostor proportion}
-    \todo{discussion}
+
     \section{Conclusion}\label{sec:conclusion}
+    \todo{discussion}
+    Based on the results from \Cref{sec:evaluation}, we draw the same conclusion as, that is,
     %\todo{Conclude your report with a brief summary. This can be very short, i.e. 2-3 sentences.}
+    Honesty is a key component, for large-scale human societies to exist
 
     Lastly, they mention how countermeasures, i.e. employing punishment, which maintain a truthful image scoring system allow cooperation to be restored again. \cite{szamado_deception_2016}
     \todo{refer to hypothesis q}
