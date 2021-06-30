@@ -9,3 +9,7 @@ python main.py exp3_greenbeard 1 0 exp3_greenbeard_rel
 
 python main.py exp4_impostor 0 0 exp4_impostor
 python main.py exp4_impostor 1 0 exp4_impostor_rel
+
+python main.py exp4_impostor 1 0 exp4_impostor_rel_1 0.01
+python main.py exp4_impostor 1 0 exp4_impostor_rel_5 0.05
+python main.py exp4_impostor 1 0 exp4_impostor_rel_10 0.10

@@ -14,3 +14,7 @@ if len(sys.argv) > 2:
     cfg.PLOT_RELATIVE = bool(int(sys.argv[2]))
 if len(sys.argv) > 3:
     cfg.PLOT_TOTAL = bool(int(sys.argv[3]))
+if len(sys.argv) > 4:
+    imp_part = float(sys.argv[5])
+    cfg.POP_TYPES[2] = 0.5 - imp_part
+    cfg.POP_TYPES[3] = imp_part

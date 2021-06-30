@@ -16,7 +16,7 @@
 
 % VARIABLES
 \usepackage{xspace} % allows \commmand instead of \command{} with correct space afterwards
-\newcommand{\VNumSimulations}{20\xspace}
+\newcommand{\VNumSimulations}{50\xspace}
 \newcommand{\VNumDays}{10.000\xspace}
 \newcommand{\VNumPop}{100\xspace}
 \newcommand{\VNumTrees}{140\xspace}
@@ -303,7 +303,7 @@
     We simulate this case with a variety of different agent types that act differently.
     This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to share its resource with the agent who obtained a faulty one.
     By doing this they risk not having enough on their own and with a certain probability of \VProbAltruistDies they die themselves instead.
-    We differentiate these by grouping them into four different kinds of tribes/types.
+    We differentiate these by grouping them into four different kinds of tribes/types, explained below.
 
     To give it a more modern spin, we frame the story as being part of the job market.
     Here an agent stands for a contractor, a resource for a job, with a faulty resource corresponding to a difficult job a contractor is unable to finish on time.
@@ -316,7 +316,7 @@
     \subsubsection*{Experiment 1: Stable Environment}
     To create a general baseline for the simulations to take place in, we implement an environment that on average does not see any large population changes.
     This can be used to compare against in regards to the different types of type/tribe logic when they come across a faulty resource problem.
-    Every night the surviving agents reproduce by themselves (asexual, no partner needed) leading to 1 or 2 offspring with a probability of \VProbKids.
+    Every night the surviving agents reproduce by themselves (asexual, no partner needed) leading to 1 or 2 offspring with a probability of \VProbKids respectively.
     The offspring are of the same type as the parent.
     In this baseline case, this corresponds to the population only consisting of \cowards which do not help in faulty resource cases.
     These \cowards will be plotted in blue.
@@ -384,7 +384,7 @@
         \includegraphics[width=\columnwidth]{figures/exp1_stable_pop}
         \caption{\textit{Exp 1:} Without any sort of tribe logic, the populations consists of solely \cowards.
         With some deviations, the population stays on average roughly the same at around \VNumPop.
-        Visualized are \VNumSimulations random runs in light and their average in dark blue. }
+        Visualized are a subset \VNumSimulations random runs in light and their average in dark blue. }
         \label{fig:exp1_stable_pop}
     \end{figure}
 
@@ -394,7 +394,7 @@
     We now analyze a more sophisticated way of survival by introducing concepts of collaboration and altruism.
 
     A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:exp2_total}.
-    The population also reaches saturation pretty early on around day 1.500.
+    The population also reaches saturation pretty early on around day 2.500.
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_total}
@@ -404,7 +404,7 @@
     \end{figure}
 
     We further analyze how this effect gets spread between the two types of agents.
-    In \Cref{fig:exp2_sucker} we see that the amount of \suckers (aka altruists that help everyone) decreases steadily, while the population in general increases.
+    In \Cref{fig:exp2_sucker} we see that the amount of \suckers (aka altruists that help everyone) first increases a bit and then decreases steadily, while the population in general increases.
     This figure also shows that the amount of \cowards substantially increases.
     A potential explanation for this could be that in general the birth-rate for the \altruists is much lower than their die-off rate given their altruistic sacrifices.
     The cowards on the other hand, while having the same birth-rate, experience lower die-off-rates due to running away from a predator instead of helping.
@@ -414,19 +414,19 @@
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_sucker}
         \caption{\textit{Exp 2:} Altruistic thinking leads to a large absolute increase in population.
-        A saturation occurs around day 1.000, after which the increase in \cowards starts to slow down a little.
-        By day 5.000 there are virtually no \suckers.}
+        A saturation occurs around day 2.500, after which the increase in \cowards starts to slow down a little.
+        By day 6.000 there are virtually no \suckers.}
         \label{fig:exp2_sucker}
     \end{figure}
 
     In the following \Cref{fig:exp2_sucker_rel} we see how these different types stack against each other when compared in relative terms.
     With a sharp increase right at the beginning, around $80\%$ of the population consists of cowards by day 2.500.
-    While there are some runs where the \suckers were able to gain traction and constitute close to the majority at around day 1.000, by day 5.000 the population consists of 99\% \cowards with the \suckers going extinct in most runs.
+    While there are some runs where the \suckers were able to gain traction and constitute close to the majority at around day 1.000, by day 6.000 the population consists of 99\% \cowards with the \suckers going extinct in most runs.
 
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_sucker_rel}
-        \caption{\textit{Exp 2:} With altruistic thinking the proportion of \suckers declines linearly, reaching 0 after around 5.000 days on average.}
+        \caption{\textit{Exp 2:} With altruistic thinking the proportion of \suckers declines linearly, reaching close to 0\% after around 6.000 days on average.}
         \label{fig:exp2_sucker_rel}
     \end{figure}
 
@@ -440,15 +440,15 @@
     The amount of \greenbeards increases substantially, while the number of \cowards drops equivalently, seemingly converging towards zero.
     We see that there is a general positive trend to be made out.
     This can further be seen in \Cref{fig:exp3_greenbeard_rel} where we have plotted the relative distribution of the different types.
-    Interestingly enough, within the first 1.000 days, the number of \cowards seems to improve faster in relative and absolute terms.
+    Interestingly enough, within the first 1.500 days, the number of \cowards seems to improve almost equivalently.
     As soon as the population starts to saturate, the composition of the population shifts, with the proportion of \cowards reducing linearly.
-    At day 2.000 the \greenbeards take up 50\% of the population, reaching 80\% at day 6.000 and 90\% by the end of day 10.000.
+    At day 2.000 the \greenbeards take up 40\% of the population, reaching 80\% at day 4.000 and 95\% by the end of day 10.000.
 
 
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp3_greenbeard}
-        \caption{\textit{Exp 3:} When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 2.000 when the population saturates.
+        \caption{\textit{Exp 3:} When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 1.500 when the population saturates.
         After that the \greenbeards take over substantially.}
         \label{fig:exp3_greenbeard}
     \end{figure}
@@ -457,13 +457,13 @@
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp3_greenbeard_rel}
         \caption{\textit{Exp 3:} From a relative standpoint we see that the \greenbeard gene leads to a change in population composition.
-        Constituting 42\% of the population at day 1.000 the \greenbeards end up at over 90\% by day 10.000.}
+        Constituting 40\% of the population at day 2.000 the \greenbeards end up at over 95\% by day 10.000.}
         \label{fig:exp3_greenbeard_rel}
     \end{figure}
 
     \subsubsection*{Experiment 4: On Trust and More}
     In our final experiment we run our simulations with all the previously mentioned tribes/types and add the notion of trust.
-    We do this by introducing \impostors which to others appear as \greenbeards (allowing them to be rescued by other \greenbeards) but act as \cowards (not helping anyone) when they come across a difficult-job situation in both positions respectively.
+    We do this by introducing \impostors which to others appear as \greenbeards (allowing them to be rescued by other \greenbeards) but act as \cowards (not helping anyone) when they come across a difficult-job/faulty-resource situation in both positions respectively.
     For the following plots we have omitted visualizing single runs for clarity.
 
     There are a few interesting insights that can be made out in such an environment.
@@ -549,7 +549,7 @@
 
 
     \section{Conclusion}\label{sec:conclusion}
-    Based on the findings from our computer simulation, we empirically proved the correctness of our hypotheses, that is, (i) misinformation or deception has a major influence on the effectiveness of cooperation and (ii) the amount of misinformation does not necessarily play an important role rather if misinformation exists or not.
+    Based on the findings from our computer simulations, we empirically proved the correctness of our hypotheses, that is, (i) misinformation or deception has a major influence on the effectiveness of cooperation and (ii) the amount of misinformation does not necessarily play an important role rather if misinformation exists or not.
     We observed that altruism via reputation-based cooperation is a very unstable phenomenon which goes extinct in most of our simulations where \impostors, i.e. \textit{falsebeards}, are introduced.
     With these results, our work aligns well with the findings from \citeauthor{szamado_deception_2016} who conducted similar research to ours.
     Furthermore, we have showed that honesty and trust are key components for large-scale human societies to grow and exist.

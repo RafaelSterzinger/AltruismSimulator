@@ -87,7 +87,7 @@ def main():
 
         if PLOT_SINGLE_RUNS:
             # adds the individual run to the plot
-            if random.random() < PERCENTAGE_TO_PLOT:
+            if i < PERCENTAGE_TO_PLOT * NUM_SIMULATIONS:
                 plot_dict_by_color(count_hist_dict, linewidth=0.05)
 
     # calculates the average of each type
