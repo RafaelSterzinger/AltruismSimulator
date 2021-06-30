@@ -91,7 +91,7 @@ def main():
 
     # calculates the average of each type
     avg_hist = {k: np.mean(v, axis=0) for k, v in
-                count_histories_dict.items()}  # TODO: fails with NUM_SIMULATIONS > 7..
+                count_histories_dict.items()}
     draw_stats(avg_hist)
 
 

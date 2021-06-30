@@ -4,7 +4,7 @@ import numpy as np
 
 TIME_STR = time.strftime('%Y-%m-%d-%H-%M-%S')
 
-NUM_SIMULATIONS = 7  # TODO: averaging in main.py line 91 fails with > 7..
+NUM_SIMULATIONS = 20
 
 NUM_DAYS = 10000
 NUM_POP = 100
