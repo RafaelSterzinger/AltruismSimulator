@@ -50,6 +50,7 @@
         %\todo{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
         %\todo{change variable names}
         %\todo{check bibliography}
+        %\todo{quick little readme to repository with run script}
     \end{abstract}
 
     \maketitle
@@ -292,7 +293,8 @@
     In the case that an agent is not able to access a resource, it ceases to live.
     This is done over \VNumDays days and averaged throughout \VNumSimulations simulations.
     We simulate this case with a variety of different agent types that act differently.
-    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to share its resource with the agent who obtained a faulty one with the potential to end up dying itself instead.%\todo{dont understand that one}
+    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to share its resource with the agent who obtained a faulty one.
+    By doing this they risk not having enough on their own and with a certain probability of \VProbAltruistDies they die themselves instead.
     We differentiate these by grouping them into four different kinds of tribes/types.
 
     To give it a more modern spin, we frame the story as being part of the job market.
@@ -400,7 +402,6 @@
     The cowards on the other hand, while having the same birth-rate, experience lower die-off-rates due to running away from a predator instead of helping.
     If we compare this to the original experiment without any altruism (\Cref{fig:exp1_stable_pop}), we see that this altruistic thinking has a large net-positive effect.
     This is the case even though the \suckers do not differentiate between whom they save.
-%    \todo{play around with settings so that they do die out and the     urlcolor=cyan,following experiment makes more sense}
 
     \begin{figure}
         \includegraphics[width=\columnwidth]{figures/exp2_sucker}
@@ -585,5 +586,4 @@
     \subsubsection*{Method for Reproduction Mechanism}
     \lstinputlisting[language=Python,basicstyle=\tiny]{../core/events/night.py}
 
-    %\todo{quick little readme to repository}
 \end{document}
