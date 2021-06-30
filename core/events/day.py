@@ -2,27 +2,27 @@ import random
 import numpy as np
 
 from core.Blob import Blob
-from core.config import NUM_TREES, TREES, PROB_OF_PREDATOR, T_GRE, T_COW, T_IMP, T_SUC, PROB_ALTRUIST_DIES,\
+from core.config import NUM_RESOURCES, RESOURCES, PROB_OF_FAULTY, T_GRE, T_COW, T_IMP, T_SUC, PROB_ALTRUIST_DIES,\
     GREEN_BEARD, POPULATION_SIMULATION
 
 
 def day(pop: [Blob]):
     # resources are limited to 2*140, exceeding agents die randomly
     random.shuffle(pop)
-    if len(pop) > 2 * NUM_TREES:
-        pop = pop[:2 * NUM_TREES]
+    if len(pop) > 2 * NUM_RESOURCES:
+        pop = pop[:2 * NUM_RESOURCES]
 
     # selecting faulty resources
-    predator_occurrence = np.random.random(NUM_TREES) < PROB_OF_PREDATOR
-    agents_at_tree = [[] for _ in range(NUM_TREES)]
+    predator_occurrence = np.random.random(NUM_RESOURCES) < PROB_OF_FAULTY
+    agents_at_tree = [[] for _ in range(NUM_RESOURCES)]
 
     # each agent picks one of the 2 available places of each resource
-    selected_tree = random.sample(TREES, len(pop))
+    selected_tree = random.sample(RESOURCES, len(pop))
     for i_agent, i_tree in enumerate(selected_tree):
         agents_at_tree[i_tree].append(i_agent)
     new_pop = []
 
-    for i in range(0, NUM_TREES):
+    for i in range(0, NUM_RESOURCES):
         # if there is no faulty resource, agents at that tree live on
         if not (predator_occurrence[i]):
             new_pop.extend([pop[i_agent] for i_agent in agents_at_tree[i]])

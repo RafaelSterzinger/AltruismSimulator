@@ -1,5 +1,4 @@
 import sys
-
 import core.config as cfg
 
 cfg.POP_TYPES = {0: 0.5,
