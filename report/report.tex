@@ -47,8 +47,14 @@
     \email{rsterzinger@student.ethz.ch}
 
     \begin{abstract}
+        The concept of fitness and its connotation to survival in the evolutionary sense lead to the emergence of deflection and cooperation-based strategies.
+        Conducting a variety of experiments, we analyze the notions of altruism and trust, based on varying levels of (mis)information.
+        We show that altruism itself affects population size positively in both true (selfless) and fair (reciprocal) cases.
+        With the introduction of misinformation the effectiveness of cooperation decreases substantially.
+        As such honesty and trust are key components in societal populations as even with small amounts of deception, altruistic behaviour goes extinct.
         %\todo{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
         %\todo{check bibliography}
+        %\todo{check numbers of changed plots}
     \end{abstract}
 
     \maketitle
@@ -59,10 +65,10 @@
 
 
     The evolution of cooperation is a question which has been bothering humanity for a long time.
-    Not only is it open for debate in the fields of anthropology, sociology, and economy but also evolutionary biologist have tried to answer this question on multiple occasions \cite{gardner_theory_2009}.
-    Hence, in 2005, at the 125th anniversary issue of the American Association for the Advancement of Science (AAAS), they declared the question "How Did Cooperative Behavior Evolve?" to be one of the top 25 unsolved puzzles on which science should focus over the next quarter century \cite{aaas_125th_2005}.
+    Not only is it open for debate in the fields of anthropology, sociology and economy, also evolutionary biologist have tried to answer this question on multiple occasions~\cite{gardner_theory_2009}.
+    Hence, in 2005, at the 125th anniversary issue of the American Association for the Advancement of Science (AAAS), they declared the question "How Did Cooperative Behavior Evolve?" to be one of the top 25 unsolved puzzles on which science should focus over the next quarter century~\cite{aaas_125th_2005}.
 
-    Already in the year \citeyear{darwin_origin_1859}, \citeauthor{darwin_origin_1859}'s natural selection theory tried to explain the underlying mechanisms of a growing population.
+    Already in the year~\citeyear{darwin_origin_1859}, \citeauthor{darwin_origin_1859}'s natural selection theory tried to explain the underlying mechanisms of a growing population.
     More helpful characteristics that lead to better reproduction will keep on spreading throughout the population \cite{darwin_origin_1859}.
     This gives off the impression that certain traits will develop in order to optimize an individual's reproducibility (fitness). \citeauthor{fisherGeneticalTheoryNatural1930} \cite{fisherGeneticalTheoryNatural1930} builds upon this by introducing the notion of gene frequencies.
     Genes leading to higher individual fitness thus will increase in frequency and lead to a general increase in mean fitness.
@@ -74,7 +80,7 @@
     Being heavily influenced by the amount of information an agent has over another \cite{wallace_misinformation_1973}, in our work, we want to add an additional layer of difficulty by introducing the possibility of spreading misinformation.
     Here, the goal is that misinformation might give an agent a distorted perception on the behaviour of other kinds, i.e. resulting in the existence of so-called \impostors (see \Cref{sec:hypothesis}).
     Similar research has previously been conducted, with the closest being the work by \citeauthor{szamado_deception_2016} \cite{szamado_deception_2016} where they looked at the influence of noisy gossip on cooperative behaviour in an indirect reciprocity setting via image scoring (see \Cref{sec:related_work}).
-    As opposed to our work, agents can adaptively change their reputation by being more cooperatively, whereas we explore the idea of misinformation from a more static point of view, that is, an agent decides from the beginning onwards whether it wants to cooperate or not but might do this in disguise.
+    As opposed to our work, agents can adaptively change their reputation by being more cooperatively, whereas we explore the idea of misinformation from a more static point of view, that is, an agent decides and shares from the beginning onwards whether it wants to cooperate but might not do this in disguise.
 
     For this, we conduct a variety of experiments to analyze how different levels of cooperation and environment settings affect a population and the development of respective types/tribes within.
     With these simulations, we seek to provide a profound answer to the question on whether it is possible for cooperative behaviour to co-exist in reputation based settings where misinformation gives rise to disguised cheats.
@@ -82,11 +88,11 @@
     These simulations consist of \VNumSimulations runs, each spanning \VNumDays days where we visualize and analyze the average results of those runs.
     The general environment looks as follows: based on a starting population of \VNumPop, these starting agents compete for $2 \times \VNumTrees$ possible jobs to earn money every day.
     Furthermore, one or two agents are assigned to a department where they work on their individual task resulting in \VNumTrees overall departments.
-    To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job option, he goes bankrupt and dies out, hence limiting the total population size.
+    To simplify the case, we say that if an agent is not able to win any of the $2 \times \VNumTrees$ job options, he goes bankrupt and dies out, hence limiting the total population size.
     On top of that, not every one of the jobs is a guaranteed win.
     With a certain probability of \VProbPredator a job is considered to be difficult and if only one agent has taken on that job, he dies out.
     Here, the possibility of cooperation arises: if an agent with a normal job decides to help an agent with a difficult job from its department, the agent who was previously doomed to die will survive.
-    However, this comes at the risk that the previously safe agent might not be abel to finish its task on time and, thus might go bankrupt.
+    However, this comes at the risk that the previously safe agent might not be able to finish its task on time and, thus might go bankrupt itself.
     We say that with a certain probability of \VProbAltruistDies the helping agent fails and ends up sacrificing itself for the other.
 
 
@@ -96,23 +102,25 @@
 
         \item Next, we introduce altruistic thinking.
         As such, an altruist (later called \sucker) always tries to help out an agent assigned with a difficult job.
-        By doing so, the other agent is able to live on while the helping altruist now has the burden of doing both job options with the possibility of failing its original one.
+        By doing so, the other agent is able to live on while the helping altruist now has the burden of doing both job options with the possibility of failing its original one and thus dying.
 
         \item Building upon the previous experiment, we introduce a fairer notion where altruists turn into \greenbeards that only help out other \greenbeards.
         Thus, they ignore uncooperative agents that do not bear the green beard allele.
 
         \item A final experiment introduces further types next to the altruist/\greenbeard.
         The final types are as follows: \cowards (never help with difficult jobs), \suckers (always help with difficult jobs), \impostors (look like \greenbeards, but never help) and \greenbeards (only help other bearers of the green beard allele, aka \impostors and \greenbeards).
-        Here, the portion of \impostors act as a resemblance of misinformation spread in a population, i.e. the more \impostors, the more \greenbeards obtained deceptive information.
+        Here, the portion of \impostors act as a resemblance of misinformation spread in a population, i.e. the more \impostors there are, the more the \greenbeards obtain deceptive information.
 
     \end{enumerate}
 
     We analyze these cases with a variety of different parameters which are explained in further detail in \Cref{sec:method} and \Cref{sec:evaluation}, and can be inspected in \Cref{sec:configs}.
 
-    %\todo{Mention central results and key insight briefly.}
 
     Going further, we provide a general taxonomy on the basis of cooperative behaviour, starting with inclusive fitness, followed by the more granular distinction between direct and indirect fitness.
     This is then followed by a section focusing on indirect reciprocity which we separated from the other section in order to put more emphasise on it as this cooperative mechanism plays a key role in our research question.
+
+    Through our experiments we show that honesty and trust are key components for large-scale human societies.
+    Without this, altruism via reputation-based cooperation is an unstable phenomenon that goes extinct through the introduction of the aforementioned \impostors.
 
 
     \section{Inclusive Fitness}\label{sec:inclusive-fitness}
