@@ -14,18 +14,11 @@ from core.Blob import Blob
 
 if len(sys.argv) > 1:
     importlib.import_module(f'core.experiments.{sys.argv[1]}')
-from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
+from core.config import NUM_POP, NUM_DAYS, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
     PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE, PLOT_SINGLE_RUNS
 
 from core.events.day import day
-
-
-def night(pop: [Blob]):
-    n_offsprings = random.choices(population=[0, 1, 2], weights=PROB_BIRTH, k=len(pop))
-    for i, n_o in enumerate(n_offsprings):
-        pop.extend([Blob(next(ID_COUNTER), pop[i].type) for _ in range(0, n_o)])
-    return pop
-
+from core.events.night import night
 
 def simulation():
     types = []

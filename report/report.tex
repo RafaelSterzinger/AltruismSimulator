@@ -47,16 +47,16 @@
     \email{rsterzinger@student.ethz.ch}
 
     \begin{abstract}
-        \todo{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
-        \todo{change variable names}
-        \todo{check bibliography}
+        %\todo{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
+        %\todo{change variable names}
+        %\todo{check bibliography}
     \end{abstract}
 
     \maketitle
 
 
     \section{Introduction}\label{sec:introduction}
-    %\todo{In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.}
+    %In this section, introduce the task in a bit more detail. In the first paragraph, try to answer why the task is of interest at all and what makes it challenging. You may also discuss some related work here. For example, you can summarize how other researchers have addressed the problem and what might be the disadvantages of these works.
 
 
     The evolution of cooperation is a question which has been bothering humanity for a long time.
@@ -69,7 +69,7 @@
     Genes leading to higher individual fitness thus will increase in frequency and lead to a general increase in mean fitness.
 
 
-    %\todo{In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result.}
+    %In the second half of the introduction, describe your method. This should be more detailed than in the abstract. You can talk about how your method relates to existing work (e.g. it is a combination or extension of existing methods, what other papers were you inspired by, etc.). You should also state the central result here, and the key insight that made it possible to achieve this result.
 
     Based on this idea of fitness, different survival strategies can occur in nature, for instance, there are as many games where cooperative strategies succeed as ones where deflection performs better.
     Being heavily influenced by the amount of information an agent has over another \cite{wallace_misinformation_1973}, in our work, we want to add an additional layer of difficulty by introducing the possibility of spreading misinformation.
@@ -110,7 +110,7 @@
 
     We analyze these cases with a variety of different parameters which are explained in further detail in \Cref{sec:method} and \Cref{sec:evaluation}, and can be inspected in \Cref{sec:configs}.
 
-    \todo{Mention central results and key insight briefly.}
+    %\todo{Mention central results and key insight briefly.}
 
     Going further, we provide a general taxonomy on the basis of cooperative behaviour, starting with inclusive fitness, followed by the more granular distinction between direct and indirect fitness.
     This is then followed by a section focusing on indirect reciprocity which we separated from the other section in order to put more emphasise on it as this cooperative mechanism plays a key role in our research question.
@@ -285,14 +285,14 @@
     This section covers our experiment setup including the different kind of parameters we vary as well as detailed explanations regarding our environment and the logic of the simulations we run.
     In general the situation can be thought of as follows.
     Based on a starting population of \VNumPop, these \VNumPop agents compete for a certain amount of limited resources.
-    We cap these at \VNumTrees, but allow one such resource to be shared by two agents, leading to effectively 2 * \VNumTrees resources.
+    We cap these at \VNumTrees, but allow one such resource to be shared by two agents, leading to effectively 2~*~\VNumTrees resources.
     The reason for this is that two agents sharing a resource can help each other out in the case that part of the resource turns out to be faulty.
     With a probability of \VProbPredator, we set a resource to be faulty.
     When two agents share a partially faulty resource, only one of them gets chosen randomly to live on (if there is only one, it does not live on).
     In the case that an agent is not able to access a resource, it ceases to live.
     This is done over \VNumDays days and averaged throughout \VNumSimulations simulations.
     We simulate this case with a variety of different agent types that act differently.
-    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to share its resource with the agent who obtained a faulty one with the potential to end up dying itself instead.\todo{dont understand that one}
+    This manifests itself in the way the non-chosen agent acts when in a faulty resource situation, where e.g. it could choose to share its resource with the agent who obtained a faulty one with the potential to end up dying itself instead.%\todo{dont understand that one}
     We differentiate these by grouping them into four different kinds of tribes/types.
 
     To give it a more modern spin, we frame the story as being part of the job market.
@@ -326,8 +326,6 @@
     We plot the \suckers in yellow.
 
 
-    \todo{add code with logic}
-
     \subsubsection*{Experiment 3: Greenbeard Altruism}
     To introduce a more realistic and fair version of altruism, we let the \suckers obtain a green-beard gene which allows them to differentiate between their own kind and \cowards.
     By doing this, in the faulty-resource scenario, the newly introduced \greenbeards decide to only help out other \greenbeards that would return the favour if the positions were changed.
@@ -353,16 +351,11 @@
     \end{itemize}
 
 
-%    {
-%        This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.
-%        If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.
-%    }
+%    {This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.}
 
 
     \section{Evaluation}\label{sec:evaluation}
-%    {
-%        In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.
-%    }
+%    {In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.}
 
     In the following section we present the results of our experiments.
 
@@ -589,5 +582,8 @@
     \subsubsection*{Method for Type-Specific Behaviour}
     \lstinputlisting[language=Python,basicstyle=\tiny]{../core/events/day.py}
 
-    \todo{quick little readme}
+    \subsubsection*{Method for Reproduction Mechanism}
+    \lstinputlisting[language=Python,basicstyle=\tiny]{../core/events/night.py}
+
+    %\todo{quick little readme to repository}
 \end{document}
