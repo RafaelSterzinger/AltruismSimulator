@@ -1,4 +1,4 @@
-python main.py exp1_stable_pop 0 0 exp1_stable_pop
+python main.py exp1_stable_pop 0 0 exp1_stable_pop 7
 
 python main.py exp2_cow_alt 0 1 exp2_total
 python main.py exp2_cow_alt 0 0 exp2_sucker

@@ -4,7 +4,8 @@ import numpy as np
 
 TIME_STR = time.strftime('%Y-%m-%d-%H-%M-%S')
 
-NUM_SIMULATIONS = 30
+NUM_SIMULATIONS = 20
+PERCENTAGE_TO_PLOT = 0.5
 
 NUM_DAYS = 10000
 NUM_POP = 100

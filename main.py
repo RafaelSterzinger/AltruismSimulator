@@ -15,7 +15,7 @@ from core.Blob import Blob
 if len(sys.argv) > 1:
     importlib.import_module(f'core.experiments.{sys.argv[1]}')
 from core.config import NUM_POP, NUM_DAYS, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
-    PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE, PLOT_SINGLE_RUNS
+    PLOT_RELATIVE, PLOT_TOTAL, TOTAL_TYPE, PLOT_SINGLE_RUNS, PERCENTAGE_TO_PLOT
 
 from core.events.day import day
 from core.events.night import night
@@ -87,7 +87,8 @@ def main():
 
         if PLOT_SINGLE_RUNS:
             # adds the individual run to the plot
-            plot_dict_by_color(count_hist_dict, linewidth=0.1)
+            if random.random() < PERCENTAGE_TO_PLOT:
+                plot_dict_by_color(count_hist_dict, linewidth=0.05)
 
     # calculates the average of each type
     avg_hist = {k: np.mean(v, axis=0) for k, v in
