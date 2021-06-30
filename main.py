@@ -3,16 +3,15 @@ import itertools
 import os
 import random
 import sys
-from _operator import add
-from operator import truediv
 
 import numpy as np
 import matplotlib.pyplot as plt
 
+from _operator import add
+from operator import truediv
 from core import config
 from core.Blob import Blob
 
-# needs to be before core.config import
 if len(sys.argv) > 1:
     importlib.import_module(f'core.experiments.{sys.argv[1]}')
 from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR, POP_TYPES, ID_COUNTER, POP_COLORS, \
@@ -20,13 +19,10 @@ from core.config import NUM_POP, NUM_DAYS, PROB_BIRTH, NUM_SIMULATIONS, TIME_STR
 
 from core.events.day import day
 
-NUM_PASSED_NIGHTS = "ERROR: ONLY ACCESS BY config.py AS VARIABLE GETS CHANGED"
-
 
 def night(pop: [Blob]):
     n_offsprings = random.choices(population=[0, 1, 2], weights=PROB_BIRTH, k=len(pop))
     for i, n_o in enumerate(n_offsprings):
-        # TODO: enable that one can have offspring of different type than oneself (similar to above weights with a shift)
         pop.extend([Blob(next(ID_COUNTER), pop[i].type) for _ in range(0, n_o)])
     return pop
 
@@ -46,6 +42,7 @@ def simulation():
     for i in range(1, NUM_DAYS):
         cur_pop_size = len(pop)
 
+        # specific type-specific behaviour is called during the day
         pop = day(pop)
         death_rate = cur_pop_size - len(pop)
         if len(pop) == 0:
@@ -56,6 +53,8 @@ def simulation():
         die_hist[i] = death_rate
 
         cur_pop_size = len(pop)
+
+        # reproduction behaviour is called during the night
         pop = night(pop)
         birth_rate = len(pop) - cur_pop_size
         reproduction_hist[i] = birth_rate
@@ -94,9 +93,10 @@ def main():
             count_histories_dict[k][i] = v
 
         if PLOT_SINGLE_RUNS:
+            # adds the individual run to the plot
             plot_dict_by_color(count_hist_dict, linewidth=0.1)
 
-    # AVG
+    # calculates the average of each type
     avg_hist = {k: np.mean(v, axis=0) for k, v in
                 count_histories_dict.items()}  # TODO: fails with NUM_SIMULATIONS > 7..
     draw_stats(avg_hist)

@@ -8,7 +8,7 @@ cfg.POP_TYPES = {0: 0.25,
                  3: 0.25}
 cfg.PLOT_RELATIVE = True
 cfg.PLOT_TOTAL = False
-cfg.GREEN_BEARD = True  # has to be true
+cfg.GREEN_BEARD = True
 cfg.PLOT_SINGLE_RUNS = False
 
 if len(sys.argv) > 2:
