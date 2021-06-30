@@ -51,10 +51,9 @@
         Conducting a variety of experiments, we analyze the notions of altruism and trust, based on varying levels of (mis)information.
         We show that altruism itself affects population size positively in both true (selfless) and fair (reciprocal) cases.
         With the introduction of misinformation the effectiveness of cooperation decreases substantially.
-        As such honesty and trust are key components in societal populations as even with small amounts of deception, altruistic behaviour goes extinct.
-        %\todo{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
+        As such honesty and trust are key components in societal populations as even with small amounts of deception, altruistic behaviour goes extinct in our experiments.
+        %\{Briefly summarize your report here. This should include a description of the task you are solving, a summary of how you approach the task (i.e. your method), as well as a preview of the central result. The abstract should be short, i.e. 4-5 sentences. The rest of this template outlines a rough structure how you \emph{can} organize your report. It mentions all the components we would typically expect. It is a good idea to adhere these guidelines, but they are not binding, i.e., you are free to re-organize your report as you see fit.}
         %\todo{check bibliography}
-        %\todo{check numbers of changed plots}
     \end{abstract}
 
     \maketitle
@@ -363,6 +362,22 @@
 
 %    {This section should describe the method of your \emph{final} submission in detail. This includes things you did with the data (e.g. preprocessing, augmentations, changes of representation, etc.) and the actual definition of your model. Sometimes it is fine to describe a model in text or math only, sometimes it is better to create an overview figure. Either way, after reading this section, a reader should be able to implement your architecture.If you have enough space, you may list hyperparameter values in an ``Implementation Details'' paragraph. Otherwise list them in the README of your code repo.}
 
+    \pagebreak
+
+    \begin{figure}[hbt!]
+        \includegraphics[width=\columnwidth]{figures/exp1_stable_pop}
+        \caption{\textit{Exp 1:} Without any sort of tribe logic, the populations consists of solely \cowards.
+        With some deviations, the population stays on average roughly the same at around \VNumPop.
+        Visualized are a subset \VNumSimulations random runs in light and their average in dark blue. }
+        \label{fig:exp1_stable_pop}
+    \end{figure}
+
+    \begin{figure}[hbt!]
+        \includegraphics[width=\columnwidth]{figures/exp2_total}
+        \caption{\textit{Exp 2:} As compared to the baseline case, introducing altruistic thinking leads to a big increase in and early saturation of population size.
+        }
+        \label{fig:exp2_total}
+    \end{figure}
 
     \section{Evaluation}\label{sec:evaluation}
 %    {In the evaluation section you should describe the experiments that support the claims of the story of your report. For example, if you previously said ``We propose to combine model A with component B which leads to improved accuracy.'' you should back this up with experimental evidence here. Typically, this means that you should show the performance of model A with and without component B. May be your method warrants other kinds of such ablation studies, which you might include and describe here.}
@@ -376,18 +391,25 @@
     Red stands for \impostors which appear to others as they would help out but in fact do not.
     Green denotes \greenbeards which help out other seemingly altruistic agents (aka suckers, greenbeards and impostors).
 
+
     \subsubsection*{Experiment 1: Stable Environment}
     As our first step, we create an environment so that our population neither goes extinct, nor explodes in size within the \VNumDays days timeframe we have set.
     As can be seen in \Cref{fig:exp1_stable_pop} while there notably is one large deviation, averaging over \VNumSimulations runs the starting population of 100 stays roughly the same.
 
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp1_stable_pop}
-        \caption{\textit{Exp 1:} Without any sort of tribe logic, the populations consists of solely \cowards.
-        With some deviations, the population stays on average roughly the same at around \VNumPop.
-        Visualized are a subset \VNumSimulations random runs in light and their average in dark blue. }
-        \label{fig:exp1_stable_pop}
+
+    \begin{figure}[hbt!]
+        \includegraphics[width=\columnwidth]{figures/exp2_sucker}
+        \caption{\textit{Exp 2:} Altruistic thinking leads to a large absolute increase in population.
+        A saturation occurs around day 2.500, after which the increase in \cowards starts to slow down a little.
+        By day 6.000 there are virtually no \suckers.}
+        \label{fig:exp2_sucker}
     \end{figure}
 
+    \begin{figure}[t]
+        \includegraphics[width=\columnwidth]{figures/exp2_sucker_rel}
+        \caption{\textit{Exp 2:} With altruistic thinking the proportion of \suckers declines linearly, reaching close to 0\% after around 6.000 days on average.}
+        \label{fig:exp2_sucker_rel}
+    \end{figure}
 
     \subsubsection*{Experiment 2: General Altruism}
 
@@ -395,13 +417,6 @@
 
     A first run shows that, as expected, introducing altruistic thinking leads to an increase in population size, visualized in \Cref{fig:exp2_total}.
     The population also reaches saturation pretty early on around day 2.500.
-
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp2_total}
-        \caption{\textit{Exp 2:} As compared to the baseline case, introducing altruistic thinking leads to a big increase in and early saturation of population size.
-        }
-        \label{fig:exp2_total}
-    \end{figure}
 
     We further analyze how this effect gets spread between the two types of agents.
     In \Cref{fig:exp2_sucker} we see that the amount of \suckers (aka altruists that help everyone) first increases a bit and then decreases steadily, while the population in general increases.
@@ -411,26 +426,26 @@
     If we compare this to the original experiment without any altruism (\Cref{fig:exp1_stable_pop}), we see that this altruistic thinking has a large net-positive effect.
     This is the case even though the \suckers do not differentiate between whom they save.
 
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp2_sucker}
-        \caption{\textit{Exp 2:} Altruistic thinking leads to a large absolute increase in population.
-        A saturation occurs around day 2.500, after which the increase in \cowards starts to slow down a little.
-        By day 6.000 there are virtually no \suckers.}
-        \label{fig:exp2_sucker}
-    \end{figure}
 
-    In the following \Cref{fig:exp2_sucker_rel} we see how these different types stack against each other when compared in relative terms.
+    In \Cref{fig:exp2_sucker_rel} we see how these different types stack against each other when compared in relative terms.
     With a sharp increase right at the beginning, around $80\%$ of the population consists of cowards by day 2.500.
     While there are some runs where the \suckers were able to gain traction and constitute close to the majority at around day 1.000, by day 6.000 the population consists of 99\% \cowards with the \suckers going extinct in most runs.
 
 
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp2_sucker_rel}
-        \caption{\textit{Exp 2:} With altruistic thinking the proportion of \suckers declines linearly, reaching close to 0\% after around 6.000 days on average.}
-        \label{fig:exp2_sucker_rel}
+    \begin{figure}[t]
+        \includegraphics[width=\columnwidth]{figures/exp3_greenbeard}
+        \caption{\textit{Exp 3:} When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 1.500 when the population saturates.
+        After that the \greenbeards take over substantially.}
+        \label{fig:exp3_greenbeard}
     \end{figure}
 
 
+    \begin{figure}[t]
+        \includegraphics[width=\columnwidth]{figures/exp3_greenbeard_rel}
+        \caption{\textit{Exp 3:} From a relative standpoint we see that the \greenbeard gene leads to a change in population composition.
+        Constituting 40\% of the population at day 2.000 the \greenbeards end up at over 95\% by day 10.000.}
+        \label{fig:exp3_greenbeard_rel}
+    \end{figure}
 
     \subsubsection*{Experiment 3: Greenbeard Altruism}
     In the previous experiments we have seen that the \cowards experience an increase in population, while the \suckers/\altruists themselves do not benefit all too much (besides the net increase in general population).
@@ -446,73 +461,44 @@
 
 
 
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp3_greenbeard}
-        \caption{\textit{Exp 3:} When introducing \greenbeards that only help each other out, we see an increase in \cowards up until day 1.500 when the population saturates.
-        After that the \greenbeards take over substantially.}
-        \label{fig:exp3_greenbeard}
-    \end{figure}
-
-
-    \begin{figure}
-        \includegraphics[width=\columnwidth]{figures/exp3_greenbeard_rel}
-        \caption{\textit{Exp 3:} From a relative standpoint we see that the \greenbeard gene leads to a change in population composition.
-        Constituting 40\% of the population at day 2.000 the \greenbeards end up at over 95\% by day 10.000.}
-        \label{fig:exp3_greenbeard_rel}
-    \end{figure}
-
     \subsubsection*{Experiment 4: On Trust and More}
     In our final experiment we run our simulations with all the previously mentioned tribes/types and add the notion of trust.
     We do this by introducing \impostors which to others appear as \greenbeards (allowing them to be rescued by other \greenbeards) but act as \cowards (not helping anyone) when they come across a difficult-job/faulty-resource situation in both positions respectively.
     For the following plots we have omitted visualizing single runs for clarity.
 
     There are a few interesting insights that can be made out in such an environment.
-    Looking at \Cref{fig:exp4_impostor} the first thing that can be noticed is that the population increases faster in the \coward-\greenbeard only case (\Cref{fig:exp3_greenbeard}) which saturates around day 2.000.
-    Converging at around day 1.500, this experiment shows closer tendencies to the \coward-\sucker scenario (\Cref{fig:exp2_sucker}).
+    Looking at \Cref{fig:exp4_impostor} the first thing that can be noticed is that the population increases faster than in the \coward-\sucker only case (\Cref{fig:exp2_sucker}) which saturates around day 2.500.
+    Converging at around day 1.500, this experiment shows closer tendencies to the \coward-\greenbeard scenario (\Cref{fig:exp3_greenbeard}).
 
-    Similarities to experiment 3 (\Cref{fig:exp3_greenbeard}) can still be made out in regard to the progression of the population types.
-    As before, when the population saturates, the altruistic tribes see a downwards trend.
-    At that point the amount of \impostors increases substantially while the \cowards can hold their own, decreasing only by around one third.
+    Further similarities to experiment 2 (\Cref{fig:exp2_sucker}) can be made out in regard to the progression of the population types.
+    As before, when the population saturates, the altruistic tribes see a downwards trend in relative and absolute terms.
+    At that point the amount of \impostors increases substantially while the \cowards can hold their own, decreasing only marginally.
 
     Analyzing the relative frequencies in \Cref{fig:exp4_impostor_rel}, we see that the true altruists, the \suckers, are the first to go at around day 4.000.
-    The \greenbeards, now being on their own against the non-altruists, are able to hold on until day 8.000 at which they also go extinct.
-    After that, the proportion of \impostors and \cowards stays the same.
+    The \greenbeards, now being on their own against the non-altruists, are able to hold on until day 10.000 at which they also seemingly go extinct.
+    After the extinction of the \suckers when the \greenbeards are also low in size, the proportion of \impostors and \cowards changes only by around 10\%.
     This makes sense as without any \greenbeards the \impostors do not differ from simple \cowards.
     At the end the \impostors make up 80\% of the population while the \cowards take up 20 \%.
 
-    This adds to the belief that such a \impostor genome offsets the benefits of \greenbeards holding together, supporting our first hypothesis (see \Cref{sec:hypothesis}) that misinformation has a major impact on the effectiveness of cooperation.
+    This adds to the belief that such an \impostor genome offsets the benefits of \greenbeards holding together, supporting our first hypothesis (see \Cref{sec:hypothesis}) that misinformation has a major impact on the effectiveness of cooperation.
 
-    In addition to the previously conducted experiment, we also wanted to explore whether different sized starting proportions of \impostors and \greenbeards allow a co-existence of cooperative behaviour in a dishonest society.
-    Here, the share of \impostors resembles the amount of spread misinformation that results in distorted beliefs on other agents' behaviour/reputation.
-    Keeping the sizes of \cowards and \suckers fixed, we vary the ratio of \greenbeards and \impostors.
-    Since previous runs with equally sized starting shares of tribes/type showed that altruistic behaviour is doomed to go extinct, we wanted to give altruistic behaviour a second chance and thus varied the proportion of \impostors between 1\% and 25\%, resulting in runs with 1\%, 5\%, 10\%, and 25\% of \impostors at the beginning.
-    The results of these simulations are visualized in \Cref{fig:misinformation}.
 
-    Looking at these results, additional interesting trends can be made out.
-    For instance, in three (\Cref{fig:misinformation} b, c, and d) out of four settings, altruistic behaviour always goes extinct or is about to die out soon.
-    Only in one scenario (\Cref{fig:misinformation} a), where the proportion of \impostors starts out with 1\%, \greenbeards were sometimes capable to survive ($\sim 71\%$ of the runs) as \impostors went extinct by chance which explains the stagnation at around day 8.000.
-
-    This provides evidence for our second hypothesis that as soon as misinformation gets introduced to the setting, altruism via cooperation gets unstable quickly and that the amount actually does not play a significant role.
-    It is rather the case that \greenbeards can only survive if, in earlier stages of the simulations, \impostors go extinct by encountering too many faulty resources and do not receive help (encountering \cowards, or being the only one at a resource).
-
-    Another interesting insight from these settings is the fact that altruistic behaviour seems to stick around longer depending on the initial proportion of \greenbeards but still goes extinct eventually.
-    Furthermore, one final surprising observation can be made by looking at \Cref{fig:misinformation} a, i.e. a setting dominated by \greenbeards.
-    In this case, greenbeard altruism showed its effectiveness again, similar to experiment 3 (\Cref{fig:exp3_greenbeard_rel}), where \cowards die out again in addition to \suckers.
-
-    \begin{figure}
+    \begin{figure}[t]
         \includegraphics[width=\columnwidth]{figures/exp4_impostor}
         \caption{\textit{Exp 4:} The introduction of the \impostor genome in combination with all the other types leads to a faster population increase compared to the \coward-\greenbeard case in Experiment 3.}
         \label{fig:exp4_impostor}
     \end{figure}
 
 
-    \begin{figure}
+    \begin{figure}[t]
         \includegraphics[width=\columnwidth]{figures/exp4_impostor_rel}
         \caption{\textit{Exp 4:} When looking at the relative frequencies of simulations encompassing all tribes, we see a large decrease in the altruistic types.
         On the other hand, \impostors increase linearly while the amount of \cowards only drops by around one third.
         Plotted is only the average of the simulations for brevity.}
         \label{fig:exp4_impostor_rel}
     \end{figure}
+
+
 
     \begin{figure*}
         \begin{subfigure}[b]{0.475\textwidth}
@@ -547,6 +533,23 @@
         \label{fig:misinformation}
     \end{figure*}
 
+
+    In addition to the previously conducted experiment, we also wanted to explore whether different sized starting proportions of \impostors and \greenbeards allow a co-existence of cooperative behaviour in a dishonest society.
+    Here, the share of \impostors resembles the amount of spread misinformation that results in distorted beliefs on other agents' behaviour/reputation.
+    Keeping the sizes of \cowards and \suckers fixed, we vary the ratio of \greenbeards and \impostors.
+    Since previous runs with equally sized starting shares of tribes/type showed that altruistic behaviour is doomed to go extinct, we wanted to give altruistic behaviour a second chance and thus varied the proportion of \impostors between 1\% and 25\%, resulting in runs with 1\%, 5\%, 10\%, and 25\% of \impostors at the beginning.
+    The results of these simulations are visualized in \Cref{fig:misinformation}.
+
+    Looking at these results, additional interesting trends can be made out.
+    For instance, in three (\Cref{fig:misinformation} b, c, and d) out of four settings, altruistic behaviour always goes extinct or is about to die out soon.
+    Only in one scenario (\Cref{fig:misinformation} a), where the proportion of \impostors starts out with 1\%, \greenbeards were sometimes capable to survive ($\sim 71\%$ of the runs) as \impostors went extinct by chance which explains the stagnation at around day 8.000.
+
+    This provides evidence for our second hypothesis that as soon as misinformation gets introduced to the setting, altruism via cooperation gets unstable quickly and that the amount actually does not play a significant role.
+    It is rather the case that \greenbeards can only survive if, in earlier stages of the simulations, \impostors go extinct by encountering too many faulty resources and do not receive help (encountering \cowards, or being the only one at a resource).
+
+    Another interesting insight from these settings is the fact that altruistic behaviour seems to stick around longer depending on the initial proportion of \greenbeards but still goes extinct eventually.
+    Furthermore, one final surprising observation can be made by looking at \Cref{fig:misinformation} a, i.e. a setting dominated by \greenbeards.
+    In this case, greenbeard altruism showed its effectiveness again, similar to experiment 3 (\Cref{fig:exp3_greenbeard_rel}), where \cowards die out again in addition to \suckers.
 
     \section{Conclusion}\label{sec:conclusion}
     Based on the findings from our computer simulations, we empirically proved the correctness of our hypotheses, that is, (i) misinformation or deception has a major influence on the effectiveness of cooperation and (ii) the amount of misinformation does not necessarily play an important role rather if misinformation exists or not.
